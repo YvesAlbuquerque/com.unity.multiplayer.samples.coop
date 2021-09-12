@@ -24,8 +24,8 @@ namespace BossRoom.Visual
                 m_MainCamera.Follow = transform;
                 m_MainCamera.LookAt = transform;
                 // default rotation / zoom
-                m_MainCamera.m_Heading.m_Bias = 40f;
-                m_MainCamera.m_YAxis.Value = 0.5f;
+                m_MainCamera.m_Heading.m_Bias = 0f;
+                m_MainCamera.m_YAxis.Value = 0f;
             }
         }
     }
