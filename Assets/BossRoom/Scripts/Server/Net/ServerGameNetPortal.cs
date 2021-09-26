@@ -1,11 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using MLAPI;
 using UnityEngine;
-using MLAPI.SceneManagement;
+using Unity.Netcode;
+using UnityEngine.SceneManagement;
 
-namespace BossRoom.Server
+namespace Unity.Multiplayer.Samples.BossRoom.Server
 {
     /// <summary>
     /// Represents a single player on the game server
@@ -59,8 +58,8 @@ namespace BossRoom.Server
             m_Portal = GetComponent<GameNetPortal>();
             m_Portal.NetworkReadied += OnNetworkReady;
 
-            // we add ApprovalCheck callback BEFORE OnNetworkSpawn to avoid spurious MLAPI warning:
-            // "No ConnectionApproval callback defined. Connection approval will timeout"
+            // we add ApprovalCheck callback BEFORE OnNetworkSpawn to avoid spurious Netcode for GameObjects (Netcode)
+            // warning: "No ConnectionApproval callback defined. Connection approval will timeout"
             m_Portal.NetManager.ConnectionApprovalCallback += ApprovalCheck;
             m_Portal.NetManager.OnServerStarted += ServerStartedHandler;
             m_ClientData = new Dictionary<string, PlayerData>();
@@ -96,7 +95,7 @@ namespace BossRoom.Server
 
                 //The "BossRoom" server always advances to CharSelect immediately on start. Different games
                 //may do this differently.
-                NetworkManager.Singleton.SceneManager.SwitchScene("CharSelect");
+                NetworkManager.Singleton.SceneManager.LoadScene("CharSelect", LoadSceneMode.Single);
 
                 if( m_Portal.NetManager.IsHost)
                 {
@@ -149,7 +148,7 @@ namespace BossRoom.Server
         {
             if( m_Portal.NetManager.IsServer )
             {
-                m_Portal.NetManager.StopServer();
+                m_Portal.NetManager.Shutdown();
             }
 
             Clear();
@@ -212,20 +211,20 @@ namespace BossRoom.Server
 
 
         /// <summary>
-        /// This logic plugs into the "ConnectionApprovalCallback" exposed by MLAPI.NetworkManager, and is run every time a client connects to us.
-        /// See GNH_Client.StartClient for the complementary logic that runs when the client starts its connection.
+        /// This logic plugs into the "ConnectionApprovalCallback" exposed by Netcode.NetworkManager, and is run every time a client connects to us.
+        /// See ClientGameNetPortal.StartClient for the complementary logic that runs when the client starts its connection.
         /// </summary>
         /// <remarks>
         /// Since our game doesn't have to interact with some third party authentication service to validate the identity of the new connection, our ApprovalCheck
-        /// method is simple, and runs synchronously, invoking "callback" to signal approval at the end of the method. MLAPI currently doesn't support the ability
+        /// method is simple, and runs synchronously, invoking "callback" to signal approval at the end of the method. Netcode currently doesn't support the ability
         /// to send back more than a "true/false", which means we have to work a little harder to provide a useful error return to the client. To do that, we invoke a
-        /// client RPC in the same channel that MLAPI uses for its connection callback. Since that channel ("MLAPI_INTERNAL") is both reliable and sequenced, we can be
+        /// custom message in the same channel that Netcode uses for its connection callback. Since the delivery is NetworkDelivery.ReliableSequenced, we can be
         /// confident that our login result message will execute before any disconnect message.
         /// </remarks>
         /// <param name="connectionData">binary data passed into StartClient. In our case this is the client's GUID, which is a unique identifier for their install of the game that persists across app restarts. </param>
-        /// <param name="clientId">This is the clientId that MLAPI assigned us on login. It does not persist across multiple logins from the same client. </param>
+        /// <param name="clientId">This is the clientId that Netcode assigned us on login. It does not persist across multiple logins from the same client. </param>
         /// <param name="callback">The delegate we must invoke to signal that the connection was approved or not. </param>
-        private void ApprovalCheck(byte[] connectionData, ulong clientId, MLAPI.NetworkManager.ConnectionApprovedDelegate callback)
+        private void ApprovalCheck(byte[] connectionData, ulong clientId, NetworkManager.ConnectionApprovedDelegate callback)
         {
             if (connectionData.Length > k_MaxConnectPayload)
             {
@@ -284,13 +283,13 @@ namespace BossRoom.Server
 
             AssignPlayerName(clientId, connectionPayload.playerName);
 
-            //TODO:MLAPI: this must be done after the callback for now. In the future we expect MLAPI to allow us to return more information as part of
+            //TODO:Netcode: this must be done after the callback for now. In the future we expect Netcode to allow us to return more information as part of
             //the approval callback, so that we can provide more context on a reject. In the meantime we must provide the extra information ourselves,
             //and then manually close down the connection.
             m_Portal.ServerToClientConnectResult(clientId, gameReturnStatus);
             if(gameReturnStatus != ConnectStatus.Success )
             {
-                //TODO-FIXME:MLAPI Issue #796. We should be able to send a reason and disconnect without a coroutine delay.
+                //TODO-FIXME:Netcode Issue #796. We should be able to send a reason and disconnect without a coroutine delay.
                 StartCoroutine(WaitToDisconnectClient(clientId, gameReturnStatus));
             }
         }
@@ -299,7 +298,7 @@ namespace BossRoom.Server
         {
             m_Portal.ServerToClientSetDisconnectReason(clientId, reason);
 
-            // TODO fix once this is solved: Issue 796 Unity-Technologies/com.unity.multiplayer.mlapi#796
+            // TODO fix once this is solved: Issue 796 Unity-Technologies/com.unity.netcode.gameobjects#796
             // this wait is a workaround to give the client time to receive the above RPC before closing the connection
             yield return new WaitForSeconds(0);
 
@@ -315,7 +314,7 @@ namespace BossRoom.Server
             var netObj = NetworkManager.Singleton.SpawnManager.GetPlayerNetworkObject(clientId);
             if( netObj )
             {
-                //TODO-FIXME:MLAPI Issue #795. Should not need to explicitly despawn player objects.
+                //TODO-FIXME:Netcode Issue #795. Should not need to explicitly despawn player objects.
                 netObj.Despawn(true);
             }
             m_Portal.NetManager.DisconnectClient(clientId);

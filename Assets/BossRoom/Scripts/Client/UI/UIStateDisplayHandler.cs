@@ -1,11 +1,10 @@
-using System;
 using System.Collections;
-using BossRoom.Visual;
-using MLAPI;
+using Unity.Multiplayer.Samples.BossRoom.Visual;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-namespace BossRoom.Client
+namespace Unity.Multiplayer.Samples.BossRoom.Client
 {
     /// <summary>
     /// Class designed to only run on a client. Add this to a world-space prefab to display health or name on UI.

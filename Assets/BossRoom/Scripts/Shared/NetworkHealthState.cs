@@ -1,9 +1,8 @@
 using System;
-using MLAPI;
-using MLAPI.NetworkVariable;
+using Unity.Netcode;
 using UnityEngine;
 
-namespace BossRoom
+namespace Unity.Multiplayer.Samples.BossRoom
 {
     /// <summary>
     /// MonoBehaviour containing only one NetworkVariableInt which represents this object's health.
@@ -11,7 +10,7 @@ namespace BossRoom
     public class NetworkHealthState : NetworkBehaviour
     {
         [HideInInspector]
-        public NetworkVariableInt HitPoints = new NetworkVariableInt();
+        public NetworkVariable<int> HitPoints = new NetworkVariable<int>();
 
         // public subscribable event to be invoked when HP has been fully depleted
         public event Action hitPointsDepleted;

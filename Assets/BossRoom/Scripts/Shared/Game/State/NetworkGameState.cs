@@ -1,8 +1,8 @@
 using System;
-using MLAPI;
+using Unity.Netcode;
 using UnityEngine;
 
-namespace BossRoom
+namespace Unity.Multiplayer.Samples.BossRoom
 {
     public class NetworkGameState : NetworkBehaviour
     {

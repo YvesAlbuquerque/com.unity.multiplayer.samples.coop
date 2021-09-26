@@ -1,10 +1,9 @@
-using BossRoom;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
 
-namespace BossRoom.Client
+namespace Unity.Multiplayer.Samples.BossRoom.Client
 {
     /// <summary>
     /// Controls the "information box" on the character-select screen.

@@ -1,7 +1,6 @@
-using MLAPI;
 using UnityEngine;
 
-namespace BossRoom.Server
+namespace Unity.Multiplayer.Samples.BossRoom.Server
 {
     public class IdleAIState : AIState
     {

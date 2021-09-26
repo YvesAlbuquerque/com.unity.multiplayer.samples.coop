@@ -1,8 +1,7 @@
-using MLAPI;
-using MLAPI.Spawning;
+using Unity.Netcode;
 using UnityEngine;
 
-namespace BossRoom.Visual
+namespace Unity.Multiplayer.Samples.BossRoom.Visual
 {
     /// <summary>
     /// Controls the visuals for an always-hit-projectile attack. See FXProjectileTargetedAction.cs for more about this action type.

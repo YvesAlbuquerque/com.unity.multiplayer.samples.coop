@@ -1,8 +1,8 @@
 using System;
-using MLAPI;
+using Unity.Netcode;
 using UnityEngine;
 
-namespace BossRoom.Client
+namespace Unity.Multiplayer.Samples.BossRoom.Client
 {
     public class ClientPlayerAvatar : NetworkBehaviour
     {

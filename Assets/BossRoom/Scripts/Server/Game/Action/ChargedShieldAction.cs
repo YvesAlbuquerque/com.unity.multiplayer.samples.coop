@@ -1,9 +1,7 @@
-using MLAPI;
-using System.Collections.Generic;
-using MLAPI.Spawning;
+using Unity.Netcode;
 using UnityEngine;
 
-namespace BossRoom.Server
+namespace Unity.Multiplayer.Samples.BossRoom.Server
 {
     /// <summary>
     /// A defensive action where the character becomes resistant to damage.
