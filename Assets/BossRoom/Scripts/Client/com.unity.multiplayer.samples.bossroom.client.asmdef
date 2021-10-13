@@ -10,7 +10,8 @@
         "Unity.TextMeshPro",
         "Unity.Services.Core",
         "Unity.Services.Authentication",
-        "Unity.Netcode.Adapter.UTP"
+        "Unity.Netcode.Adapter.UTP",
+        "YGameDev.YJack"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

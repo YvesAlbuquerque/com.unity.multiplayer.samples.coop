@@ -20,7 +20,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
         [SerializeField]
         private Vector3 m_CursorOffset;
 
-        private void Awake()
+        private void OnEnable()
         {
             Assert.IsNotNull(m_Canvas);
         }

@@ -60,7 +60,7 @@ namespace Unity.Multiplayer.Samples.BossRoom
 
         public Avatar[] AvatarConfiguration;
 
-        private void Awake()
+        private void OnEnable()
         {
             m_LobbyPlayers = new NetworkVariableLobbyState(k_MaxLobbyPlayers);
         }

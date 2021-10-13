@@ -16,7 +16,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
 
         private ServerGameNetPortal m_ServerNetPortal;
 
-        private void Awake()
+        private void OnEnable()
         {
             CharSelectData = GetComponent<CharSelectData>();
             m_ServerNetPortal = GameObject.FindGameObjectWithTag("GameNetPortal").GetComponent<ServerGameNetPortal>();

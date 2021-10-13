@@ -105,7 +105,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
         }
         private Dictionary<LobbyMode, List<GameObject>> m_LobbyUIElementsByMode;
 
-        private void Awake()
+        private void OnEnable()
         {
             Instance = this;
             CharSelectData = GetComponent<CharSelectData>();

@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
+using YJack.Network;
 
 namespace Unity.Multiplayer.Samples.BossRoom
 {

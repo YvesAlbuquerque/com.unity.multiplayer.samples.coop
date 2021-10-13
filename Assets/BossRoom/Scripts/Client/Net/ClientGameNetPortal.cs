@@ -9,6 +9,7 @@ using Unity.Netcode;
 using Unity.Netcode.Transports.UNET;
 using Unity.Services.Core;
 using Unity.Services.Authentication;
+using YJack.Network;
 
 namespace Unity.Multiplayer.Samples.BossRoom.Client
 {

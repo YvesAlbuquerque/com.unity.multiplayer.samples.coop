@@ -11,7 +11,7 @@ public class RoomNameBox : MonoBehaviour
 
     bool m_ConnectionFinished = false;
 
-    void Awake()
+    void OnEnable()
     {
         Assert.IsNotNull(m_RoomNameText, $"{nameof(m_RoomNameText)} not assigned!");
 
