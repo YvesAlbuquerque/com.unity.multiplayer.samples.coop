@@ -925,7 +925,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6417648243838381818}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -1111,6 +1111,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7297531496490972690}
   - component: {fileID: 7818796052053811380}
+  - component: {fileID: 9190735139857176001}
   m_Layer: 5
   m_Name: MusicVolume
   m_TagString: Untagged
@@ -1192,6 +1193,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &9190735139857176001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6154749339973089473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bab15d259fe602e4a88c008897056ab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeIndex: 1
 --- !u!1 &6217156373103072017
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,6 +1216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6217156373103072016}
   - component: {fileID: 6217156373103072047}
+  - component: {fileID: 1726061126154273984}
   m_Layer: 5
   m_Name: MasterVolume
   m_TagString: Untagged
@@ -1225,7 +1240,7 @@ RectTransform:
   - {fileID: 1591034541194713450}
   - {fileID: 1591034540966426621}
   m_Father: {fileID: 6417648243838381818}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -1283,6 +1298,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1726061126154273984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6217156373103072017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bab15d259fe602e4a88c008897056ab8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeIndex: 0
 --- !u!1 &6417648243838381817
 GameObject:
   m_ObjectHideFlags: 0
@@ -1294,7 +1322,6 @@ GameObject:
   - component: {fileID: 6417648243838381818}
   - component: {fileID: 6417648243838381820}
   - component: {fileID: 6417648243838381819}
-  - component: {fileID: 6417648243838381814}
   m_Layer: 5
   m_Name: SettingsPanel
   m_TagString: Untagged
@@ -1314,8 +1341,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2274705493899115683}
-  - {fileID: 6217156373103072016}
   - {fileID: 4571589763288329519}
+  - {fileID: 6217156373103072016}
   - {fileID: 7297531496490972690}
   m_Father: {fileID: 294265330276786217}
   m_RootOrder: 1
@@ -1363,20 +1390,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6417648243838381814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6417648243838381817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3fad71d1b21b8545815ca408165e739, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MasterVolumeSlider: {fileID: 6217156373103072047}
-  m_MusicVolumeSlider: {fileID: 7818796052053811380}
 --- !u!1 &6892085633112661758
 GameObject:
   m_ObjectHideFlags: 0
