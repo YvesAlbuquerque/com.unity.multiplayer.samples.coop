@@ -9,7 +9,8 @@ Boss Room is a fully functional co-op multiplayer RPG made with Unity Netcode. I
 You can use everything in this project as a starting point or as bits and pieces in your own Unity games. The project is licensed under the Unity Companion License. See [LICENSE.md](LICENSE.md) for more legal information.
 
 > __IMPORTANT__:
-> - Boss Room supports those platforms supported by Netcode (Windows, Mac, iOS, and Android).
+> - Boss Room has been developed and tested on these Platforms (Windows, Mac, iOS, and Android).
+>     - Tested on iPhone 6 and Pixel 3.
 > - Boss Room is compatible with the latest Unity LTS version.
 > - Make sure to include standalone support for Windows/Mac in your installation. 
 
@@ -83,7 +84,7 @@ For an overview of the project's architecture please check out our [ARCHITECTURE
 
 ---------------
 
-For a deep dive in Unity Netcode and Boss Room, visit our [doc](https://docs-multiplayer.unity3d.com/) and [Learn](https://docs-multiplayer.unity3d.com/docs/learn/introduction) sections.
+For a deep dive in Unity Netcode and Boss Room, visit our [doc](https://docs-multiplayer.unity3d.com/) and [Unity Multiplayer Resources](https://docs-multiplayer.unity3d.com/docs/learn/introduction) sections.
 
 ## Bite-size Samples
 This repository contains a collection of bitesize sample projects and games that showcase different sub-features of NGO. You can review these samples with documentation to understand APIs and features better.
