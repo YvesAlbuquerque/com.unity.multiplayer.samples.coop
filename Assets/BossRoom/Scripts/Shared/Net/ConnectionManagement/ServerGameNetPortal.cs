@@ -30,7 +30,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
         [SerializeField]
         NetworkObject m_GameState;
 
-        private GameNetPortal m_Portal;
+        protected GameNetPortal m_Portal;
 
         /// <summary>
         /// Maps a given client guid to the data for a given client player.
@@ -48,7 +48,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
         /// <summary>
         /// Keeps a list of what clients are in what scenes.
         /// </summary>
-        private Dictionary<ulong, int> m_ClientSceneMap = new Dictionary<ulong, int>();
+        protected Dictionary<ulong, int> m_ClientSceneMap = new Dictionary<ulong, int>();
 
         /// <summary>
         /// The active server scene index.
@@ -105,7 +105,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
         /// Handles the case where NetworkManager has told us a client has disconnected. This includes ourselves, if we're the host,
         /// and the server is stopped."
         /// </summary>
-        private void OnClientDisconnect(ulong clientId)
+        protected void OnClientDisconnect(ulong clientId)
         {
             m_ClientSceneMap.Remove(clientId);
             if( m_ClientIDToGuid.TryGetValue(clientId, out var guid ) )
