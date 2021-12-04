@@ -323,6 +323,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
         /// </summary>
         private void ConfigureUIForLobbyMode(LobbyMode mode)
         {
+            Debug.Log(mode);
             // first the easy bit: turn off all the inappropriate ui elements, and turn the appropriate ones on!
             foreach (var list in m_LobbyUIElementsByMode.Values)
             {
@@ -397,7 +398,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
         /// <summary>
         /// Called directly by UI elements!
         /// </summary>
-        public void OnPlayerExit()
+        virtual public void OnPlayerExit()
         {
             // Player is leaving the group
             // first disconnect then return to menu

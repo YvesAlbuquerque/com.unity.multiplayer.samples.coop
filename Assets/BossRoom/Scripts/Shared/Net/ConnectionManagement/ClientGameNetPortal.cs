@@ -20,7 +20,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
     public class ClientGameNetPortal : MonoBehaviour
     {
         public static ClientGameNetPortal Instance;
-        private GameNetPortal m_Portal;
+        protected GameNetPortal m_Portal;
 
         /// <summary>
         /// If a disconnect occurred this will be populated with any contextual information that was available to explain why.
@@ -41,7 +41,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
         /// </summary>
         public event Action NetworkTimedOut;
 
-        protected void Awake()
+        private void Awake()
         {
             if (Instance != null) throw new Exception("Invalid state, instance is not null");
 
@@ -74,8 +74,10 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
             Instance = null;
         }
 
-        public void OnNetworkReady()
+        virtual public void OnNetworkReady()
         {
+            Debug.Log("ClientGameNetPortal.OnNetworkReady");
+
             if (!m_Portal.NetManager.IsClient)
             {
                 enabled = false;
@@ -113,7 +115,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
             DisconnectReason.SetDisconnectReason(status);
         }
 
-        private void OnDisconnectOrTimeout(ulong clientID)
+        virtual protected void OnDisconnectOrTimeout(ulong clientID)
         {
             // we could also check whether the disconnect was us or the host, but the "interesting" question is whether
             //following the disconnect, we're no longer a Connected Client, so we just explicitly check that scenario.
@@ -137,9 +139,14 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
                 else if (DisconnectReason.Reason == ConnectStatus.GenericDisconnect || DisconnectReason.Reason == ConnectStatus.Undefined)
                 {
                     // only call this if generic disconnect. Else if there's a reason, there's already code handling that popup
-                    NetworkTimedOut?.Invoke();
+                    CallNetworkTimeOut();
                 }
             }
+        }
+
+        protected void CallNetworkTimeOut ()
+        {
+            NetworkTimedOut?.Invoke();
         }
 
         /// <summary>
@@ -260,8 +267,15 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
             ConnectClient(portal);
         }
 
+        protected void CallOnUnityRelayJoinFailed(string message)
+        {
+            OnUnityRelayJoinFailed?.Invoke(message);
+
+        }
         protected static void ConnectClient(GameNetPortal portal)
         {
+            Debug.Log("ConnectClient");
+
             var clientGuid = ClientPrefs.GetGuid();
             var payload = JsonUtility.ToJson(new ConnectionPayload()
             {
@@ -283,16 +297,19 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
             // should only do this once StartClient has been called (start client will initialize CustomMessagingManager
             NetworkManager.Singleton.CustomMessagingManager.RegisterNamedMessageHandler(nameof(ReceiveServerToClientConnectResult_CustomMessage), ReceiveServerToClientConnectResult_CustomMessage);
             NetworkManager.Singleton.CustomMessagingManager.RegisterNamedMessageHandler(nameof(ReceiveServerToClientSetDisconnectReason_CustomMessage), ReceiveServerToClientSetDisconnectReason_CustomMessage);
+
         }
 
         public static void ReceiveServerToClientConnectResult_CustomMessage(ulong clientID, FastBufferReader reader)
         {
+            Debug.Log("ReceiveServerToClientConnectResult_CustomMessage");
             reader.ReadValueSafe(out ConnectStatus status);
             Instance.OnConnectFinished(status);
         }
 
         public static void ReceiveServerToClientSetDisconnectReason_CustomMessage(ulong clientID, FastBufferReader reader)
         {
+            Debug.Log("ReceiveServerToClientSetDisconnectReason_CustomMessage");
             reader.ReadValueSafe(out ConnectStatus status);
             Instance.OnDisconnectReasonReceived(status);
         }

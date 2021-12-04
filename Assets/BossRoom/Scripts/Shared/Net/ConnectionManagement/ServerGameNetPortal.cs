@@ -79,7 +79,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             }
         }
 
-        public void OnNetworkReady()
+        virtual public void OnNetworkReady()
         {
             if (!m_Portal.NetManager.IsServer)
             {
@@ -87,6 +87,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             }
             else
             {
+                Debug.Log("OnNetworkReady_base");
                 //O__O if adding any event registrations here, please add an unregistration in OnClientDisconnect.
                 m_Portal.NetManager.OnClientDisconnectCallback += OnClientDisconnect;
 

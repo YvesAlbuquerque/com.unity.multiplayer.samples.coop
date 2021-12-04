@@ -77,23 +77,27 @@ namespace Unity.Multiplayer.Samples.BossRoom
         /// <summary>
         /// How many connections we create a Unity relay allocation for
         /// </summary>
-        private const int k_MaxUnityRelayConnections = 8;
+        protected const int k_MaxUnityRelayConnections = 8;
 
         // Instance of GameNetPortal placed in scene. There should only be one at once
         public static GameNetPortal Instance;
-        private ClientGameNetPortal m_ClientPortal;
-        private ServerGameNetPortal m_ServerPortal;
+        protected ClientGameNetPortal m_ClientPortal;
+        protected ServerGameNetPortal m_ServerPortal;
 
-        protected void Awake()
+        private void Awake()
         {
+            Debug.Log("BossRoom.GameNetPortal.Awake");
+
             Debug.Assert(Instance == null);
             Instance = this;
             m_ClientPortal = GetComponent<ClientGameNetPortal>();
             m_ServerPortal = GetComponent<ServerGameNetPortal>();
         }
 
-        void Start()
+        private void Start()
         {
+            Debug.Log("BossRoom.GameNetPortal.Start");
+
             DontDestroyOnLoad(gameObject);
 
             //we synthesize a "OnNetworkSpawn" event for the NetworkManager out of existing events. At some point
@@ -104,6 +108,8 @@ namespace Unity.Multiplayer.Samples.BossRoom
 
         private void OnSceneEvent(SceneEvent sceneEvent)
         {
+            Debug.Log("BossRoom.GameNetPortal.OnSceneEvent");
+
             // only processing single player finishing loading events
             if (sceneEvent.SceneEventType != SceneEventType.LoadComplete) return;
 
@@ -123,6 +129,8 @@ namespace Unity.Multiplayer.Samples.BossRoom
 
         private void ClientNetworkReadyWrapper(ulong clientId)
         {
+            Debug.Log("BossRoom.ClientNetworkReadyWrapper");
+
             if (clientId == NetManager.LocalClientId)
             {
                 OnNetworkReady();
@@ -134,8 +142,9 @@ namespace Unity.Multiplayer.Samples.BossRoom
         /// This method runs when NetworkManager has started up (following a succesful connect on the client, or directly after StartHost is invoked
         /// on the host). It is named to match NetworkBehaviour.OnNetworkSpawn, and serves the same role, even though GameNetPortal itself isn't a NetworkBehaviour.
         /// </summary>
-        private void OnNetworkReady()
+        virtual protected void OnNetworkReady()
         {
+            Debug.Log("BossRoom.GameNetPortal.OnNetworkReady");
             if (NetManager.IsHost)
             {
                 //special host code. This is what kicks off the flow that happens on a regular client

@@ -11,13 +11,13 @@ namespace Unity.Multiplayer.Samples.BossRoom.Visual
     public class MainMenuUI : MonoBehaviour
     {
         [SerializeField]
-        private PopupPanel m_ResponsePopup;
+        protected PopupPanel m_ResponsePopup;
 
-        private const string k_DefaultIP = "127.0.0.1";
+        protected const string k_DefaultIP = "127.0.0.1";
 
-        private GameNetPortal m_GameNetPortal;
+        protected GameNetPortal m_GameNetPortal;
 
-        private Client.ClientGameNetPortal m_ClientNetPortal;
+        protected Client.ClientGameNetPortal m_ClientNetPortal;
 
         private static MainMenuUI s_Instance = null;
 
@@ -41,7 +41,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Visual
         /// <summary>
         /// This will get more sophisticated as we move to a true relay model.
         /// </summary>
-        private const int k_ConnectPort = 9998;
+        protected const int k_ConnectPort = 9998;
 
         void Start()
         {
@@ -84,7 +84,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Visual
             }, k_DefaultIP, k_ConnectPort);
         }
 
-        public void OnConnectClicked()
+        virtual public void OnConnectClicked()
         {
             m_ResponsePopup.SetupEnterGameDisplay(false, "Join Game", "Input the host IP below", "Input the room name below", "Input the join code below", "iphost", "Join",
                 (string connectInput, int connectPort, string playerName, OnlineMode onlineMode) =>
@@ -141,6 +141,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Visual
         /// <param name="connecting">pass true if this is being called in response to a connect finishing.</param>
         private void ConnectStatusToMessage(ConnectStatus status, bool connecting)
         {
+            Debug.Log("ConnectStatusToMessage");
             switch(status)
             {
                 case ConnectStatus.Undefined:
