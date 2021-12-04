@@ -9,8 +9,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Unity.Services.Authentication;
 using Unity.Services.Core;
-//using YJack.Network;
-
 
 namespace Unity.Multiplayer.Samples.BossRoom
 {
@@ -39,8 +37,6 @@ namespace Unity.Multiplayer.Samples.BossRoom
         public string playerName;
     }
 
-
-
     /// <summary>
     /// The GameNetPortal is the general purpose entry-point for game network messages between the client and server. It is available
     /// as soon as the initial network connection has completed, and persists across all scenes. Its purpose is to move non-GameObject-specific
@@ -68,6 +64,11 @@ namespace Unity.Multiplayer.Samples.BossRoom
         NetworkManager m_NetworkManager;
 
         public NetworkManager NetManager => m_NetworkManager;
+
+        [SerializeField]
+        AvatarRegistry m_AvatarRegistry;
+
+        public AvatarRegistry AvatarRegistry => m_AvatarRegistry;
 
         /// <summary>
         /// the name of the player chosen at game start
@@ -166,7 +167,7 @@ namespace Unity.Multiplayer.Samples.BossRoom
         /// <param name="port">The port to connect to. </param>
         virtual public void StartHost(string ipaddress, int port)
         {
-            var chosenTransport = NetworkManager.Singleton.gameObject.GetComponent<TransportPicker>().IpHostTransport;
+            var chosenTransport  = NetworkManager.Singleton.gameObject.GetComponent<TransportPicker>().IpHostTransport;
             NetworkManager.Singleton.NetworkConfig.NetworkTransport = chosenTransport;
 
             // Note: In most cases, this switch case shouldn't be necessary. It becomes necessary when having to deal with multiple transports like this
@@ -178,18 +179,17 @@ namespace Unity.Multiplayer.Samples.BossRoom
                     unetTransport.ServerListenPort = port;
                     break;
                 case UnityTransport unityTransport:
-                    unityTransport.SetConnectionData(ipaddress, (ushort)port);
+                    unityTransport.SetConnectionData(ipaddress, (ushort) port);
                     break;
                 default:
                     throw new Exception($"unhandled IpHost transport {chosenTransport.GetType()}");
             }
-
-            NetManager.StartHost();
+            StartHost();
         }
 
         virtual public void StartPhotonRelayHost(string roomName)
         {
-            var chosenTransport = NetworkManager.Singleton.gameObject.GetComponent<TransportPicker>().RelayTransport;
+            var chosenTransport  = NetworkManager.Singleton.gameObject.GetComponent<TransportPicker>().RelayTransport;
             NetworkManager.Singleton.NetworkConfig.NetworkTransport = chosenTransport;
 
             switch (chosenTransport)
@@ -201,12 +201,12 @@ namespace Unity.Multiplayer.Samples.BossRoom
                     throw new Exception($"unhandled relay transport {chosenTransport.GetType()}");
             }
 
-            NetManager.StartHost();
+            StartHost();
         }
 
         virtual public async void StartUnityRelayHost()
         {
-            var chosenTransport = NetworkManager.Singleton.gameObject.GetComponent<TransportPicker>().UnityRelayTransport;
+            var chosenTransport  = NetworkManager.Singleton.gameObject.GetComponent<TransportPicker>().UnityRelayTransport;
             NetworkManager.Singleton.NetworkConfig.NetworkTransport = chosenTransport;
 
             switch (chosenTransport)
@@ -246,6 +246,12 @@ namespace Unity.Multiplayer.Samples.BossRoom
                     throw new Exception($"unhandled relay transport {chosenTransport.GetType()}");
             }
 
+            StartHost();
+        }
+
+        void StartHost()
+        {
+            SessionManager<SessionPlayerData>.Instance.AddHostData(new SessionPlayerData(NetManager.LocalClientId, PlayerName, m_AvatarRegistry.GetRandomAvatar().Guid.ToNetworkGuid(), 0, true));
             NetManager.StartHost();
         }
 
@@ -257,6 +263,7 @@ namespace Unity.Multiplayer.Samples.BossRoom
         {
             m_ClientPortal.OnUserDisconnectRequest();
             m_ServerPortal.OnUserDisconnectRequest();
+            SessionManager<SessionPlayerData>.Instance.OnUserDisconnectRequest();
             NetManager.Shutdown();
         }
     }
