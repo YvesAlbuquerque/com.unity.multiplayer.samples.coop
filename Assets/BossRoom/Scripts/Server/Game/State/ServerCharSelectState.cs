@@ -25,12 +25,14 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
 
         private void OnClientChangedSeat(ulong clientId, int newSeatIdx, bool lockedIn)
         {
+            Debug.Log("OnClientChangedSeat");
             int idx = FindLobbyPlayerIdx(clientId);
             if (idx == -1)
             {
                 //TODO-FIXME:Netcode See note about Netcode for GameObjects issue 745 in WaitToSeatNowPlayer.
                 //while this workaround is in place, we must simply ignore these update requests from the client.
                 //throw new System.Exception($"OnClientChangedSeat: client ID {clientId} is not a lobby player and cannot change seats!");
+                Debug.Log("idx == -1");
                 return;
             }
 
@@ -38,17 +40,20 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             if (CharSelectData.IsLobbyClosed.Value)
             {
                 // The user tried to change their class after everything was locked in... too late! Discard this choice
+                Debug.Log("CharSelectData.IsLobbyClosed.Value " + CharSelectData.IsLobbyClosed.Value);
                 return;
             }
 
             if ( newSeatIdx ==-1)
             {
                 // we can't lock in with no seat
+                Debug.Log("newSeatIdx ==-1");
                 lockedIn = false;
             }
             else
             {
                 // see if someone has already locked-in that seat! If so, too late... discard this choice
+                Debug.Log("newSeatIdx !=-1");
                 foreach (CharSelectData.LobbyPlayerState playerInfo in CharSelectData.LobbyPlayers)
                 {
                     if (playerInfo.ClientId != clientId && playerInfo.SeatIdx == newSeatIdx && playerInfo.SeatState == CharSelectData.SeatState.LockedIn)
@@ -77,6 +82,8 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             {
                 // to help the clients visually keep track of who's in what seat, we'll "kick out" any other players
                 // who were also in that seat. (Those players didn't click "Ready!" fast enough, somebody else took their seat!)
+                Debug.Log("lockedIn");
+
                 for (int i = 0; i < CharSelectData.LobbyPlayers.Count; ++i)
                 {
                     if (CharSelectData.LobbyPlayers[i].SeatIdx == newSeatIdx && i != idx)
@@ -113,6 +120,8 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
         /// </summary>
         private void CloseLobbyIfReady()
         {
+            Debug.Log("CloseLobbyIfReady");
+
             foreach (CharSelectData.LobbyPlayerState playerInfo in CharSelectData.LobbyPlayers)
             {
                 if (playerInfo.SeatState != CharSelectData.SeatState.LockedIn)
@@ -145,7 +154,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             }
         }
 
-        private IEnumerator WaitToEndLobby()
+        virtual protected IEnumerator WaitToEndLobby()
         {
             yield return new WaitForSeconds(3);
             NetworkManager.SceneManager.LoadScene("BossRoom", LoadSceneMode.Single);

@@ -79,8 +79,9 @@ namespace Unity.Multiplayer.Samples.BossRoom
                 //but we're a different kind of state. In either case, we're going to be replacing it.
                 Destroy(s_ActiveStateGO);
             }
-
             s_ActiveStateGO = gameObject;
+            Debug.Log("new state:" + s_ActiveStateGO);
+
             if (Persists)
             {
                 DontDestroyOnLoad(gameObject);

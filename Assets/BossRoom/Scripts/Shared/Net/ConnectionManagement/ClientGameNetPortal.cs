@@ -82,6 +82,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
             {
                 enabled = false;
             }
+            Debug.Log(enabled);
         }
 
         /// <summary>
@@ -274,7 +275,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
         }
         protected static void ConnectClient(GameNetPortal portal)
         {
-            Debug.Log("ConnectClient");
+            Debug.Log("ConnectClient with portal " + portal);
 
             var clientGuid = ClientPrefs.GetGuid();
             var payload = JsonUtility.ToJson(new ConnectionPayload()

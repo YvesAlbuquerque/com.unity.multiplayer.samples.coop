@@ -176,6 +176,7 @@ namespace Unity.Multiplayer.Samples.BossRoom
 
             if (m_ClientIDToGuid.TryGetValue(clientId, out string clientGUID))
             {
+                Debug.Log("client ID found");
                 return GetPlayerData(clientGUID);
             }
 
@@ -192,6 +193,7 @@ namespace Unity.Multiplayer.Samples.BossRoom
         {
             if (m_ClientData.TryGetValue(clientGUID, out T data))
             {
+                Debug.Log("client GUID found");
                 return data;
             }
 

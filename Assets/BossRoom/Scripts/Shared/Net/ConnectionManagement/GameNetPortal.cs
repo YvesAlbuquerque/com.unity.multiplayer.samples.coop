@@ -249,7 +249,7 @@ namespace Unity.Multiplayer.Samples.BossRoom
             StartHost();
         }
 
-        void StartHost()
+        protected void StartHost()
         {
             SessionManager<SessionPlayerData>.Instance.AddHostData(new SessionPlayerData(NetManager.LocalClientId, PlayerName, m_AvatarRegistry.GetRandomAvatar().Guid.ToNetworkGuid(), 0, true));
             NetManager.StartHost();

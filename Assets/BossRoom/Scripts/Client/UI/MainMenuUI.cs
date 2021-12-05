@@ -131,6 +131,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Visual
         /// <param name="status"></param>
         private void OnConnectFinished(ConnectStatus status)
         {
+            Debug.Log("OnConnectFinished");
             ConnectStatusToMessage(status, true);
         }
 

@@ -143,6 +143,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
         // Called directly by Button in UI
         public void OnClicked()
         {
+            Debug.Log("OnClicked " + gameObject.name);
             ClientCharSelectState.Instance.OnPlayerClickedSeat(m_SeatIndex);
         }
 
