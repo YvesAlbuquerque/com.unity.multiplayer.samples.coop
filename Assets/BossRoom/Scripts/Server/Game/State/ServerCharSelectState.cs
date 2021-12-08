@@ -23,9 +23,9 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             m_ServerNetPortal = GameObject.FindGameObjectWithTag("GameNetPortal").GetComponent<ServerGameNetPortal>();
         }
 
-        private void OnClientChangedSeat(ulong clientId, int newSeatIdx, bool lockedIn)
+        protected void OnClientChangedSeat(ulong clientId, int newSeatIdx, bool lockedIn)
         {
-            Debug.Log("OnClientChangedSeat");
+            Debug.Log("OnClientChangedSeat " + clientId.ToString() + " in seat " + newSeatIdx);
             int idx = FindLobbyPlayerIdx(clientId);
             if (idx == -1)
             {
@@ -190,7 +190,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             }
         }
 
-        private void OnSceneEvent(SceneEvent sceneEvent)
+        virtual protected void OnSceneEvent(SceneEvent sceneEvent)
         {
             // We need to filter out the event that are not a client has finished loading the scene
             if (sceneEvent.SceneEventType != SceneEventType.LoadComplete) return;

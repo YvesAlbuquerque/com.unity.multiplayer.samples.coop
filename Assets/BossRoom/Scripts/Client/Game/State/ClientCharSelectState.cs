@@ -33,7 +33,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
         [Header("Lobby Seats")]
         [SerializeField]
         [Tooltip("Collection of 8 portrait-boxes, one for each potential lobby member")]
-        private List<UICharSelectPlayerSeat> m_PlayerSeats;
+        protected List<UICharSelectPlayerSeat> m_PlayerSeats;
 
         [System.Serializable]
         public class ColorAndIndicator
@@ -279,7 +279,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
         /// <summary>
         /// Internal utility that sets the graphics for the eight lobby-seats (based on their current networked state)
         /// </summary>
-        private void UpdateSeats()
+        virtual protected void UpdateSeats()
         {
             // Players can hop between seats -- and can even SHARE seats -- while they're choosing a class.
             // Once they have chosen their class (by "locking in" their seat), other players in that seat are kicked out.
