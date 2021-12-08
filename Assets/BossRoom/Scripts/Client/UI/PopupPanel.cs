@@ -50,13 +50,13 @@ namespace Unity.Multiplayer.Samples.BossRoom.Visual
         OnlineMode m_OnlineMode;
 
         [SerializeField]
-        Toggle m_IPRadioButton;
+        protected Toggle m_IPRadioButton;
 
         [SerializeField]
         Toggle m_RelayRadioButton;
 
         [SerializeField]
-        Toggle m_UnityRelayRadioButton;
+        protected Toggle m_UnityRelayRadioButton;
 
         bool m_EnterAsHost;
 
@@ -92,7 +92,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Visual
         /// <param name="confirmCallback">  The delegate to invoke when the player confirms.  It sends what the player input.</param>
         /// <param name="defaultIpInput">The default Ip value to show in the input field.</param>
         /// <param name="defaultPortInput">The default Port# to show in the port-input field.</param>
-        public void SetupEnterGameDisplay(bool enterAsHost, string titleText, string ipHostMainText, string relayMainText, string unityRelayMainText, string inputFieldText,
+        virtual public void SetupEnterGameDisplay(bool enterAsHost, string titleText, string ipHostMainText, string relayMainText, string unityRelayMainText, string inputFieldText,
             string confirmationText, System.Action<string, int, string, OnlineMode> confirmCallback, string defaultIpInput = "", int defaultPortInput = 0)
         {
             //Clear any previous settings of the Panel first
@@ -149,7 +149,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Visual
             OnOnlineModeDropdownChanged(m_OnlineMode);
         }
 
-        void RelayRadioRadioButtonPressed(bool value)
+        protected void RelayRadioRadioButtonPressed(bool value)
         {
             if (!value)
             {
