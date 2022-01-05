@@ -33,6 +33,7 @@ namespace Unity.Multiplayer.Samples.BossRoom
 
         public void SetCharacterClass(CharacterClass characterClass)
         {
+            Debug.Log(characterClass);
             m_CharacterClass = characterClass;
         }
     }

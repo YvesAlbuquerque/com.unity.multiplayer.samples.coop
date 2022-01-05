@@ -153,7 +153,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             m_PlayerSpawnPointsList.RemoveAt(index);
 
             var playerNetworkObject = NetworkManager.Singleton.SpawnManager.GetPlayerNetworkObject(clientId);
-
+            Debug.Log(m_PlayerPrefab);
             var newPlayer = Instantiate(m_PlayerPrefab, Vector3.zero, Quaternion.identity);
 
             var newPlayerCharacter = newPlayer.GetComponent<ServerCharacter>();
@@ -164,10 +164,10 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             {
                 physicsTransform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
             }
-
             var persistentPlayerExists = playerNetworkObject.TryGetComponent(out PersistentPlayer persistentPlayer);
             Assert.IsTrue(persistentPlayerExists,
                 $"Matching persistent PersistentPlayer for client {clientId} not found!");
+            Debug.Log(persistentPlayer.gameObject);
 
             // pass character type from persistent player to avatar
             var networkAvatarGuidStateExists =
@@ -186,9 +186,11 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
                 }
             }
 
+            Debug.Log(persistentPlayer.NetworkAvatarGuidState.RegisteredAvatar);
             networkAvatarGuidState.AvatarGuid.Value =
                 persistentPlayer.NetworkAvatarGuidState.AvatarGuid.Value;
-
+            Debug.Log(networkAvatarGuidState);
+            Debug.Log(networkAvatarGuidState.AvatarGuid.Value.ToGuid());
             // pass name from persistent player to avatar
             if (newPlayer.TryGetComponent(out NetworkNameState networkNameState))
             {

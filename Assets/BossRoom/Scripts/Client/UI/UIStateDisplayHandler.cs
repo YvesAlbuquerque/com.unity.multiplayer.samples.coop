@@ -195,6 +195,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
 
         void TrackGraphicsTransform(GameObject graphicsGameObject)
         {
+            Debug.Log("TrackGraphicsTransform" + graphicsGameObject);
             m_TransformToTrack = graphicsGameObject.transform;
         }
 

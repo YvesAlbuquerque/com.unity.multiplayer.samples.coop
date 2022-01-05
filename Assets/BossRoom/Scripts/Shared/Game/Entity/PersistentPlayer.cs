@@ -26,11 +26,15 @@ namespace Unity.Multiplayer.Samples.BossRoom
 
         void Awake()
         {
-            DontDestroyOnLoad(this);
+            Debug.Log("Persistent awake");
+
+            DontDestroyOnLoad(gameObject);
         }
 
         public override void OnNetworkSpawn()
         {
+            DontDestroyOnLoad(gameObject);
+
             gameObject.name = "PersistentPlayer" + OwnerClientId;
 
             // Note that this is done here on OnNetworkSpawn in case this NetworkBehaviour's properties are accessed

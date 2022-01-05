@@ -238,6 +238,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
                     if (isNewSeat)
                     {
                         var selectedCharacterGraphics = GetCharacterGraphics(CharSelectData.AvatarConfiguration[seatIdx]);
+                        Debug.Log(selectedCharacterGraphics);
 
                         if (m_CurrentCharacterGraphics)
                         {

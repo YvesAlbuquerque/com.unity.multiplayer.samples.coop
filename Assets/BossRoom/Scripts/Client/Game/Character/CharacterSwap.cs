@@ -31,6 +31,8 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
 
             public void SetFullActive(bool isActive)
             {
+                Debug.Log("CharacterSwap.SetFullActive");
+
                 ears.SetActive(isActive);
                 head.SetActive(isActive);
                 mouth.SetActive(isActive);
@@ -47,6 +49,8 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
 
             public List<Renderer> GetAllBodyParts()
             {
+                Debug.Log("CharacterSwap.GetAllBodyParts");
+
                 if (m_CachedRenderers == null)
                 {
                     m_CachedRenderers = new List<Renderer>();
@@ -116,6 +120,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
 
         void Awake()
         {
+            Debug.Log("CharacterSwap.Awake");
             m_ClientCharacterVisualization = GetComponentInParent<ClientCharacterVisualization>();
             m_Animator = m_ClientCharacterVisualization.OurAnimator;
             m_OriginalController = m_Animator.runtimeAnimatorController;

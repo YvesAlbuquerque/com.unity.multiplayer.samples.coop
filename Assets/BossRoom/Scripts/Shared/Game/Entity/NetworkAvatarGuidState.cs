@@ -37,10 +37,15 @@ namespace Unity.Multiplayer.Samples.BossRoom
         private void Awake()
         {
             m_CharacterClassContainer = GetComponent<CharacterClassContainer>();
+            DontDestroyOnLoad(gameObject);
+
+            Debug.Log(gameObject);
+            Debug.Log(m_AvatarRegistry);
         }
 
         public void RegisterAvatar(Guid guid)
         {
+            Debug.Log(guid);
             if (guid.Equals(Guid.Empty))
             {
                 // not a valid Guid
@@ -53,7 +58,7 @@ namespace Unity.Multiplayer.Samples.BossRoom
                 Debug.LogError("Avatar not found!");
                 return;
             }
-
+            Debug.Log(avatar);
             if (m_Avatar != null)
             {
                 // already set, this is an idempotent call, we don't want to Instantiate twice
@@ -61,6 +66,7 @@ namespace Unity.Multiplayer.Samples.BossRoom
             }
 
             m_Avatar = avatar;
+            Debug.Log(avatar.CharacterClass);
 
             m_CharacterClassContainer.SetCharacterClass(avatar.CharacterClass);
         }

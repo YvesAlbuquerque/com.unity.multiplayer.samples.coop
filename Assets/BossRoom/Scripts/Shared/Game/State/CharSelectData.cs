@@ -35,6 +35,7 @@ namespace Unity.Multiplayer.Samples.BossRoom
 
             public LobbyPlayerState(ulong clientId, string name, int playerNum, SeatState state, int seatIdx = -1, float lastChangeTime = 0)
             {
+                UnityEngine.Debug.Log(seatIdx);
                 ClientId = clientId;
                 PlayerNum = playerNum;
                 SeatState = state;

@@ -42,7 +42,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
 
             // spawn avatar graphics GameObject
             var graphicsGameObject = Instantiate(m_NetworkAvatarGuidState.RegisteredAvatar.Graphics, m_GraphicsAnimator.transform);
-
+            Debug.Log(graphicsGameObject.name);
             m_ClientCharacter.SetCharacterVisualization(graphicsGameObject.GetComponent<ClientCharacterVisualization>());
 
             m_GraphicsAnimator.Rebind();

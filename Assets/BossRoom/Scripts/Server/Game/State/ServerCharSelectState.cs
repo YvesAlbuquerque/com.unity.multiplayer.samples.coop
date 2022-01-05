@@ -27,6 +27,8 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
         {
             Debug.Log("OnClientChangedSeat " + clientId.ToString() + " in seat " + newSeatIdx);
             int idx = FindLobbyPlayerIdx(clientId);
+            Debug.Log("idx:" + idx);
+
             if (idx == -1)
             {
                 throw new Exception($"OnClientChangedSeat: client ID {clientId} is not a lobby player and cannot change seats! Shouldn't be here!");
@@ -42,13 +44,11 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             if ( newSeatIdx ==-1)
             {
                 // we can't lock in with no seat
-                Debug.Log("newSeatIdx ==-1");
                 lockedIn = false;
             }
             else
             {
                 // see if someone has already locked-in that seat! If so, too late... discard this choice
-                Debug.Log("newSeatIdx !=-1");
                 foreach (CharSelectData.LobbyPlayerState playerInfo in CharSelectData.LobbyPlayers)
                 {
                     if (playerInfo.ClientId != clientId && playerInfo.SeatIdx == newSeatIdx && playerInfo.SeatState == CharSelectData.SeatState.LockedIn)
@@ -120,7 +120,10 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             foreach (CharSelectData.LobbyPlayerState playerInfo in CharSelectData.LobbyPlayers)
             {
                 if (playerInfo.SeatState != CharSelectData.SeatState.LockedIn)
+                {
+                    Debug.Log("nope, at least one player isn't locked in yet!");
                     return; // nope, at least one player isn't locked in yet!
+                }
             }
 
             // everybody's ready at the same time! Lock it down!
@@ -135,12 +138,19 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
 
         private void SaveLobbyResults()
         {
+            Debug.Log("SaveLobbyResults");
             foreach (CharSelectData.LobbyPlayerState playerInfo in CharSelectData.LobbyPlayers)
             {
                 var playerNetworkObject = NetworkManager.Singleton.SpawnManager.GetPlayerNetworkObject(playerInfo.ClientId);
 
                 if (playerNetworkObject && playerNetworkObject.TryGetComponent(out PersistentPlayer persistentPlayer))
                 {
+                    Debug.Log("playerInfo.SeatIdx " + playerInfo.SeatIdx);
+                    Debug.Log("CharSelectData.AvatarConfiguration[playerInfo.SeatIdx].Guid " + CharSelectData.AvatarConfiguration[playerInfo.SeatIdx].Guid);
+                    Debug.Log(CharSelectData.AvatarConfiguration[playerInfo.SeatIdx].Graphics);
+                    Debug.Log(CharSelectData.AvatarConfiguration[playerInfo.SeatIdx].GraphicsCharacterSelect);
+                    Debug.Log(CharSelectData.AvatarConfiguration[playerInfo.SeatIdx].Guid);
+
                     // pass avatar GUID to PersistentPlayer
                     // it'd be great to simplify this with something like a NetworkScriptableObjects :(
                     persistentPlayer.NetworkAvatarGuidState.AvatarGuid.Value =
