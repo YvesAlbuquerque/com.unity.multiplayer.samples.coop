@@ -92,7 +92,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
         /// an abstraction that makes it easier to configure which UI elements should
         /// be enabled/disabled in each stage of the lobby.
         /// </summary>
-        private enum LobbyMode
+        protected enum LobbyMode
         {
             ChooseSeat, // "Choose your seat!" stage
             SeatChosen, // "Waiting for other players!" stage
@@ -322,7 +322,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
         /// It can also disable/enable the lobby seats and the "Ready" button if they are inappropriate for the
         /// given mode.
         /// </summary>
-        private void ConfigureUIForLobbyMode(LobbyMode mode)
+        protected virtual void ConfigureUIForLobbyMode(LobbyMode mode)
         {
             Debug.Log(mode);
             // first the easy bit: turn off all the inappropriate ui elements, and turn the appropriate ones on!
