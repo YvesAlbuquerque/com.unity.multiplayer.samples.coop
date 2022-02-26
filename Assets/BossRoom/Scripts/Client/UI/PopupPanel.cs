@@ -11,6 +11,7 @@ using Unity.Services.Authentication;
 using Unity.Services.Core;
 using Unity.Services.Relay;
 using UnityRegion = Unity.Services.Relay.Models.Region;
+using OnlineMode = Unity.Multiplayer.Samples.BossRoom.OnlineMode;
 
 namespace Unity.Multiplayer.Samples.BossRoom.Visual
 {
@@ -177,7 +178,8 @@ namespace Unity.Multiplayer.Samples.BossRoom.Visual
             int.TryParse(m_PortInputField.text, out portNum);
             if (portNum <= 0)
                 portNum = m_DefaultPort;
-            m_ConfirmFunction.Invoke(m_InputField.text, portNum, m_NameDisplay.GetCurrentName(), m_OnlineMode);
+            m_ConfirmFunction.Invoke(m_InputField.text, portNum,
+                m_NameDisplay.GetCurrentName(), m_OnlineMode);
         }
 
         /// <summary>
