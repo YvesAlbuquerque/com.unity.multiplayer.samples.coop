@@ -25,8 +25,12 @@ namespace Unity.Multiplayer.Samples.BossRoom
         {
             get
             {
+                Debug.Log("RegisteredAvatar");
+
                 if (m_Avatar == null)
                 {
+                    Debug.Log("m_Avatar == null call RegisterAvatar");
+
                     RegisterAvatar(AvatarGuid.Value.ToGuid());
                 }
 
@@ -45,6 +49,10 @@ namespace Unity.Multiplayer.Samples.BossRoom
 
         public void RegisterAvatar(Guid guid)
         {
+            if (m_CharacterClassContainer == null)
+                Awake();
+            Debug.Log("RegisterAvatar");
+
             Debug.Log(guid);
             if (guid.Equals(Guid.Empty))
             {
@@ -67,6 +75,7 @@ namespace Unity.Multiplayer.Samples.BossRoom
 
             m_Avatar = avatar;
             Debug.Log(avatar.CharacterClass);
+            Debug.Log(m_CharacterClassContainer);
 
             m_CharacterClassContainer.SetCharacterClass(avatar.CharacterClass);
         }

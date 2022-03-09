@@ -186,7 +186,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
                 }
             }
 
-            Debug.Log(persistentPlayer.NetworkAvatarGuidState.RegisteredAvatar);
+            //Debug.Log(persistentPlayer.NetworkAvatarGuidState.RegisteredAvatar);
             networkAvatarGuidState.AvatarGuid.Value =
                 persistentPlayer.NetworkAvatarGuidState.AvatarGuid.Value;
             Debug.Log(networkAvatarGuidState);

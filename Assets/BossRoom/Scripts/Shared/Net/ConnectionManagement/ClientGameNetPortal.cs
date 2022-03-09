@@ -305,6 +305,8 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
         {
             Debug.Log("ReceiveServerToClientConnectResult_CustomMessage");
             reader.ReadValueSafe(out ConnectStatus status);
+            Debug.Log(status.ToString());
+
             Instance.OnConnectFinished(status);
         }
 
@@ -312,6 +314,8 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
         {
             Debug.Log("ReceiveServerToClientSetDisconnectReason_CustomMessage");
             reader.ReadValueSafe(out ConnectStatus status);
+            Debug.Log(status.ToString());
+
             Instance.OnDisconnectReasonReceived(status);
         }
     }
