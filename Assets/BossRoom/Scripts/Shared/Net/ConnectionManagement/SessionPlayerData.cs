@@ -9,10 +9,11 @@ namespace Unity.Multiplayer.Samples.BossRoom
         public Vector3 PlayerPosition;
         public Quaternion PlayerRotation;
         public NetworkGuid AvatarNetworkGuid;
+        public int PlayerTeam;
         public int CurrentHitPoints;
         public bool HasCharacterSpawned;
 
-        public SessionPlayerData(ulong clientID, string name, NetworkGuid avatarNetworkGuid, int currentHitPoints = 0, bool isConnected = false, bool hasCharacterSpawned = false)
+        public SessionPlayerData(ulong clientID, string name, NetworkGuid avatarNetworkGuid, int currentHitPoints = 0, bool isConnected = false, bool hasCharacterSpawned = false, int playerTeam = 0)
         {
             ClientID = clientID;
             PlayerName = name;
@@ -23,6 +24,7 @@ namespace Unity.Multiplayer.Samples.BossRoom
             CurrentHitPoints = currentHitPoints;
             IsConnected = isConnected;
             HasCharacterSpawned = hasCharacterSpawned;
+            PlayerTeam = playerTeam;
         }
 
         public bool IsConnected { get; set; }

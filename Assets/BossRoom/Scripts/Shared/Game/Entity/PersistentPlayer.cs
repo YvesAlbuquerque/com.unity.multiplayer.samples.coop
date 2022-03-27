@@ -12,13 +12,13 @@ namespace Unity.Multiplayer.Samples.BossRoom
     public class PersistentPlayer : NetworkBehaviour
     {
         [SerializeField]
-        PersistentPlayerRuntimeCollection m_PersistentPlayerRuntimeCollection;
+        protected PersistentPlayerRuntimeCollection m_PersistentPlayerRuntimeCollection;
 
         [SerializeField]
-        NetworkNameState m_NetworkNameState;
+        protected NetworkNameState m_NetworkNameState;
 
         [SerializeField]
-        NetworkAvatarGuidState m_NetworkAvatarGuidState;
+        protected NetworkAvatarGuidState m_NetworkAvatarGuidState;
 
         public NetworkNameState NetworkNameState => m_NetworkNameState;
 

@@ -382,7 +382,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
         /// Called directly by UI elements!
         /// </summary>
         /// <param name="seatIdx"></param>
-        public void OnPlayerClickedSeat(int seatIdx)
+        public virtual void OnPlayerClickedSeat(int seatIdx)
         {
             Debug.Log("OnPlayerClickedSeat " + seatIdx);
             CharSelectData.ChangeSeatServerRpc(NetworkManager.Singleton.LocalClientId, seatIdx, false);
@@ -391,7 +391,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
         /// <summary>
         /// Called directly by UI elements!
         /// </summary>
-        public void OnPlayerClickedReady()
+        public virtual void OnPlayerClickedReady()
         {
             Debug.Log("OnPlayerClickedReady");
 

@@ -67,7 +67,9 @@ namespace Unity.Multiplayer.Samples.BossRoom.Visual
         {
             if (!m_Animator)
             {
-                m_Animator = GetComponentInParent<Animator>();
+                m_Animator = GetComponentInChildren<Animator>();
+                if (!m_Animator)
+                    m_Animator = GetComponentInParent<Animator>();
             }
         }
 

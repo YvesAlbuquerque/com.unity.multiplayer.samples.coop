@@ -103,7 +103,7 @@ namespace Unity.Multiplayer.Samples.BossRoom
         [ServerRpc(RequireOwnership =false)]
         public void ChangeSeatServerRpc(ulong clientId, int seatIdx, bool lockedIn)
         {
-            UnityEngine.Debug.Log("ChangeSeatServerRpc");
+            UnityEngine.Debug.Log("ChangeSeatServerRpc " + clientId + " at seat Idx " + seatIdx);
             OnClientChangedSeat?.Invoke(clientId, seatIdx, lockedIn);
         }
     }

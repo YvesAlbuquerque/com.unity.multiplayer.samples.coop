@@ -40,10 +40,14 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
                 return;
             }
 
+
             // spawn avatar graphics GameObject
-            var graphicsGameObject = Instantiate(m_NetworkAvatarGuidState.RegisteredAvatar.Graphics, m_GraphicsAnimator.transform);
+            Transform root = m_GraphicsAnimator == null ? transform : m_GraphicsAnimator.transform;
+            var graphicsGameObject = Instantiate(m_NetworkAvatarGuidState.RegisteredAvatar.Graphics, root);
             Debug.Log(graphicsGameObject.name);
-            m_ClientCharacter.SetCharacterVisualization(graphicsGameObject.GetComponent<ClientCharacterVisualization>());
+            ClientCharacterVisualization clientCharacterVisualization = graphicsGameObject.GetComponent<ClientCharacterVisualization>();
+            m_GraphicsAnimator = clientCharacterVisualization.OurAnimator;
+            m_ClientCharacter.SetCharacterVisualization(clientCharacterVisualization);
 
             m_GraphicsAnimator.Rebind();
             m_GraphicsAnimator.Update(0f);

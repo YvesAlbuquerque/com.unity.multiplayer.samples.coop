@@ -19,7 +19,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
         protected GameNetPortal m_Portal;
 
         // used in ApprovalCheck. This is intended as a bit of light protection against DOS attacks that rely on sending silly big buffers of garbage.
-        private const int k_MaxConnectPayload = 1024;
+        protected const int k_MaxConnectPayload = 1024;
 
         /// <summary>
         /// Keeps a list of what clients are in what scenes.
@@ -136,7 +136,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
         /// <param name="connectionData">binary data passed into StartClient. In our case this is the client's GUID, which is a unique identifier for their install of the game that persists across app restarts. </param>
         /// <param name="clientId">This is the clientId that Netcode assigned us on login. It does not persist across multiple logins from the same client. </param>
         /// <param name="connectionApprovedCallback">The delegate we must invoke to signal that the connection was approved or not. </param>
-        private void ApprovalCheck(byte[] connectionData, ulong clientId, NetworkManager.ConnectionApprovedDelegate connectionApprovedCallback)
+        virtual protected void ApprovalCheck(byte[] connectionData, ulong clientId, NetworkManager.ConnectionApprovedDelegate connectionApprovedCallback)
         {
             if (connectionData.Length > k_MaxConnectPayload)
             {
@@ -177,7 +177,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             Debug.Log("Host ApprovalCheck: connecting client GUID: " + connectionPayload.clientGUID);
 
             gameReturnStatus = SessionManager<SessionPlayerData>.Instance.OnClientApprovalCheck(clientId, connectionPayload.clientGUID,
-                new SessionPlayerData(clientId, connectionPayload.playerName, m_Portal.AvatarRegistry.GetRandomAvatar().Guid.ToNetworkGuid(), 0, true, false));
+                new SessionPlayerData(clientId, connectionPayload.playerName, m_Portal.AvatarRegistry.GetRandomAvatar().Guid.ToNetworkGuid(), 0, true, false, 0));
 
             //Test for Duplicate Login.
             if (gameReturnStatus == ConnectStatus.LoggedInAgain)
@@ -206,7 +206,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             }
         }
 
-        private IEnumerator WaitToDisconnect(ulong clientId)
+        protected IEnumerator WaitToDisconnect(ulong clientId)
         {
             yield return new WaitForSeconds(0.5f);
             m_Portal.NetManager.DisconnectClient(clientId);

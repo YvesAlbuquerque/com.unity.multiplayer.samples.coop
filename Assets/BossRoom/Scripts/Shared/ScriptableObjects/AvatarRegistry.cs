@@ -20,6 +20,16 @@ namespace Unity.Multiplayer.Samples.BossRoom
             return avatarValue != null;
         }
 
+        public Avatar GetAvatar(int index)
+        {
+            if (m_Avatars == null || m_Avatars.Length == 0)
+            {
+                return null;
+            }
+
+            return m_Avatars[index];
+        }
+
         public Avatar GetRandomAvatar()
         {
             if (m_Avatars == null || m_Avatars.Length == 0)

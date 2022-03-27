@@ -14,35 +14,35 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
     public class ServerBossRoomState : GameStateBehaviour
     {
         [SerializeField]
-        TransformVariable m_NetworkGameStateTransform;
+        protected TransformVariable m_NetworkGameStateTransform;
 
         [SerializeField]
         [Tooltip("Make sure this is included in the NetworkManager's list of prefabs!")]
-        private NetworkObject m_PlayerPrefab;
+        protected NetworkObject m_PlayerPrefab;
 
         [SerializeField]
         [Tooltip("A collection of locations for spawning players")]
-        private Transform[] m_PlayerSpawnPoints;
+        protected Transform[] m_PlayerSpawnPoints;
 
-        private List<Transform> m_PlayerSpawnPointsList = null;
+        protected List<Transform> m_PlayerSpawnPointsList = null;
 
         public override GameState ActiveState { get { return GameState.BossRoom; } }
 
-        private GameNetPortal m_NetPortal;
-        private ServerGameNetPortal m_ServerNetPortal;
+        protected GameNetPortal m_NetPortal;
+        protected ServerGameNetPortal m_ServerNetPortal;
 
         // Wait time constants for switching to post game after the game is won or lost
-        private const float k_WinDelay = 7.0f;
-        private const float k_LoseDelay = 2.5f;
+        protected const float k_WinDelay = 7.0f;
+        protected const float k_LoseDelay = 2.5f;
 
         /// <summary>
         /// Has the ServerBossRoomState already hit its initial spawn? (i.e. spawned players following load from character select).
         /// </summary>
-        public bool InitialSpawnDone { get; private set; }
+        public bool InitialSpawnDone { get; protected set; }
 
         //these Ids are recorded for event unregistration at destruction time and are not maintained (the objects they point to may be destroyed during
         //the lifetime of the ServerBossRoomState).
-        private List<ulong> m_HeroIds = new List<ulong>();
+        protected List<ulong> m_HeroIds = new List<ulong>();
 
         public override void OnNetworkSpawn()
         {
@@ -64,7 +64,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             }
         }
 
-        private bool DoInitialSpawnIfPossible()
+        protected bool DoInitialSpawnIfPossible()
         {
             if (m_ServerNetPortal.AreAllClientsInServerScene() && !InitialSpawnDone)
             {
@@ -125,7 +125,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
         /// <summary>
         /// Helper method for OnDestroy that gets the NetworkLifeState.OnValueChanged event for a NetworkObjectId, or null if it doesn't exist.
         /// </summary>
-        private NetworkVariable<LifeState>.OnValueChangedDelegate GetLifeStateEvent(ulong id)
+        protected NetworkVariable<LifeState>.OnValueChangedDelegate GetLifeStateEvent(ulong id)
         {
             //this is all a little paranoid, because during shutdown it's not always obvious what state is still valid.
             if (NetworkManager != null && NetworkManager.SpawnManager != null && NetworkManager.SpawnManager.SpawnedObjects.TryGetValue(id, out NetworkObject netObj) && netObj != null)
@@ -136,7 +136,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             return null;
         }
 
-        private void SpawnPlayer(ulong clientId, bool lateJoin)
+        virtual protected void SpawnPlayer(ulong clientId, bool lateJoin)
         {
             Transform spawnPoint = null;
 
@@ -206,14 +206,14 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             newPlayer.SpawnWithOwnership(clientId, true);
         }
 
-        static IEnumerator WaitToReposition(Transform moveTransform, Vector3 newPosition, Quaternion newRotation)
+        public static IEnumerator WaitToReposition(Transform moveTransform, Vector3 newPosition, Quaternion newRotation)
         {
             yield return new WaitForSeconds(1.5f);
             moveTransform.SetPositionAndRotation(newPosition, newRotation);
         }
 
         // Every time a player's life state changes we check to see if game is over
-        private void OnHeroLifeStateChanged(LifeState prevLifeState, LifeState lifeState)
+        protected void OnHeroLifeStateChanged(LifeState prevLifeState, LifeState lifeState)
         {
             // If this Hero is down, check the rest of the party also
             if (lifeState == LifeState.Fainted)
@@ -242,7 +242,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             StartCoroutine(CoroGameOver(k_WinDelay, true));
         }
 
-        void SetWinState(WinState winState)
+        protected void SetWinState(WinState winState)
         {
             if (m_NetworkGameStateTransform && m_NetworkGameStateTransform.Value &&
                 m_NetworkGameStateTransform.Value.TryGetComponent(out NetworkGameState networkGameState))
@@ -251,7 +251,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             }
         }
 
-        private IEnumerator CoroGameOver(float wait, bool gameWon)
+        protected IEnumerator CoroGameOver(float wait, bool gameWon)
         {
             // wait 5 seconds for game animations to finish
             yield return new WaitForSeconds(wait);

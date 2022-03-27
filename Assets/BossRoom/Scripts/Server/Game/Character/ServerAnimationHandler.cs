@@ -18,7 +18,12 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
 
         public NetworkAnimator NetworkAnimator
         {
-            get => m_NetworkAnimator;
+            get
+            {
+                if (m_NetworkAnimator == null)
+                    m_NetworkAnimator = GetComponentInChildren<NetworkAnimator>();
+                return m_NetworkAnimator;
+            }
             set => m_NetworkAnimator = value;
         }
 

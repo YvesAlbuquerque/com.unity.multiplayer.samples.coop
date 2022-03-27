@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 2115c4661f55eff45a5a0f91fc0a12f0
 ModelImporter:
-  serializedVersion: 20200
+  serializedVersion: 21202
   internalIDToNameTable:
   - first:
       74: 1827226128182048838
@@ -551,8 +551,10 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'LeftLowerArm' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -560,7 +562,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -4115,6 +4117,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 0
     importLights: 0
+    nodeNameCollisionStrategy: 0
     fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -4126,6 +4129,7 @@ ModelImporter:
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
+    optimizeBones: 1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
@@ -4148,8 +4152,864 @@ ModelImporter:
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
-    human: []
-    skeleton: []
+    human:
+    - boneName: Bone_Hips
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bone_RightUpLeg
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bone_RightLeg
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bone_RightFoot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bone_Toe 1
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bone_Spine
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bone_RightArm
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bone_RightForeArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bone_Head
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Tank_Mouth_Boy
+      humanName: Jaw
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Mage_Eyes_Boy
+      humanName: RightEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Archer_Eyes_Boy
+      humanName: LeftEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bone_LeftArm
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bone_LeftForeArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bone_LeftUpLeg
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bone_LeftLeg
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bone_LeftFoot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bone_Toe
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bone_LeftHand
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Mage_Hand_Lt1_Boy
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Bone_RightHand
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: Mage_Hand_Rt_Boy
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: CharacterSet(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Archer_Torso_Boy
+      parentName: CharacterSet(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: Archer_Torso_Girl
+      parentName: CharacterSet(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: Bone_Hips
+      parentName: CharacterSet(Clone)
+      position: {x: 0.0038480463, y: 0.43870667, z: 0.066061}
+      rotation: {x: 0.000000065843054, y: 0.1482771, z: -0.000000009872146, w: 0.98894584}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: Bone_LeftUpLeg
+      parentName: Bone_Hips
+      position: {x: -12.124996, y: -6.2700005, z: 0.00000047683716}
+      rotation: {x: -0.16642484, y: 0.2249292, z: 0.6370745, w: 0.71822405}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bone_LeftLeg
+      parentName: Bone_LeftUpLeg
+      position: {x: -12.253839, y: 0.0000038146973, z: 1.1773338}
+      rotation: {x: 0.0000003076438, y: -0.41918507, z: 0.0000005760104, w: 0.9079008}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bone_LeftFoot
+      parentName: Bone_LeftLeg
+      position: {x: -16.016098, y: -0.0000038146973, z: -1.1773331}
+      rotation: {x: 0.40439138, y: 0.36623764, z: -0.3700384, w: 0.75193703}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bone_Toe
+      parentName: Bone_LeftFoot
+      position: {x: -17.097847, y: -0.0000019073486, z: 0.000002861023}
+      rotation: {x: -0.006260158, y: -0.017097332, z: -0.3515095, w: 0.93600726}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bone_RightUpLeg
+      parentName: Bone_Hips
+      position: {x: 12.125002, y: -6.2700005, z: 0.00000047683716}
+      rotation: {x: 0.0458627, y: -0.01209627, z: 0.8432042, w: 0.5354969}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bone_RightLeg
+      parentName: Bone_RightUpLeg
+      position: {x: -12.253788, y: 0, z: 1.1773314}
+      rotation: {x: 0.00000020682089, y: -0.35341805, z: 0.00000054743606, w: 0.9354655}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bone_RightFoot
+      parentName: Bone_RightLeg
+      position: {x: -16.016102, y: 0, z: -1.1773338}
+      rotation: {x: 0.61722183, y: 0.32762015, z: -0.33912244, w: 0.6298399}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bone_Toe 1
+      parentName: Bone_RightFoot
+      position: {x: -17.097908, y: 0.0000023841858, z: -0.0000038146973}
+      rotation: {x: 0.1464274, y: -0.09395267, z: -0.6058485, w: 0.77632433}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bone_Spine
+      parentName: Bone_Hips
+      position: {x: 0.00000028616083, y: 7.000004, z: -0.00000005435899}
+      rotation: {x: -0.1449632, y: 0.14398864, z: -0.70044965, w: 0.6838299}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bone_Cloak_Base
+      parentName: Bone_Spine
+      position: {x: -53.73846, y: 0.00000047683716, z: -17.79264}
+      rotation: {x: -0.27336612, y: 0.65215385, z: -0.6521329, w: -0.2732931}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bone_Cloak_Mid
+      parentName: Bone_Cloak_Base
+      position: {x: -22.422615, y: 0.004333496, z: 0.0023524696}
+      rotation: {x: -0.000042478994, y: -0.000083590836, z: 0.36198187, w: 0.9321852}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bone_Cloak_End
+      parentName: Bone_Cloak_Mid
+      position: {x: -35.08917, y: 0, z: -0.0000009536743}
+      rotation: {x: 6.904143e-17, y: -1.3528822e-17, z: -0.16111998, w: 0.98693484}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bone_Head
+      parentName: Bone_Spine
+      position: {x: -44.643845, y: -0.0000033143208, z: -0.000001930621}
+      rotation: {x: 0.23405555, y: -0.17638913, z: 0.6789229, w: 0.6731781}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bone_Helmet
+      parentName: Bone_Head
+      position: {x: 8.881784e-16, y: -4.2632564e-14, z: 2.9976022e-15}
+      rotation: {x: -1.058571e-16, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Helmet_Parent_Boss
+      parentName: Bone_Helmet
+      position: {x: -0.29700136, y: 93.251495, z: -4.2489004}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boss_Helmet
+      parentName: Helmet_Parent_Boss
+      position: {x: -0.3267889, y: -209.7653, z: 16.150793}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head_Parent_Archer_Boy
+      parentName: Bone_Head
+      position: {x: 0.0000014305115, y: -99.322235, z: -0.000004053116}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Archer_Ears_Boy
+      parentName: Head_Parent_Archer_Boy
+      position: {x: -2.1522038, y: -8.682833, z: -7.2283373}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Archer_Eyes_Boy
+      parentName: Head_Parent_Archer_Boy
+      position: {x: -0.0000011920929, y: 148.35704, z: 9.308052}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Archer_Hair_Boy
+      parentName: Head_Parent_Archer_Boy
+      position: {x: -0.000006198883, y: 0.000006198883, z: 0.0000029802322}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Archer_Head_Boy
+      parentName: Head_Parent_Archer_Boy
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Archer_Mouth_Boy
+      parentName: Head_Parent_Archer_Boy
+      position: {x: 0.00000071525574, y: 148.35704, z: 9.336105}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head_Parent_Archer_Girl
+      parentName: Bone_Head
+      position: {x: 0.0000014305115, y: -99.322235, z: -0.000004053116}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Archer_Ears_Girl
+      parentName: Head_Parent_Archer_Girl
+      position: {x: 0.0000009536743, y: 131.4864, z: -6.742526}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.856131, y: 0.856131, z: 0.856131}
+    - name: Archer_Eyes_Girl
+      parentName: Head_Parent_Archer_Girl
+      position: {x: -0.0000011920929, y: 148.35704, z: 9.308052}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Archer_Hair_Girl
+      parentName: Head_Parent_Archer_Girl
+      position: {x: -0.000025987625, y: 169.33165, z: -25.155195}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Archer_Head_Girl
+      parentName: Head_Parent_Archer_Girl
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Archer_Mouth_Girl
+      parentName: Head_Parent_Archer_Girl
+      position: {x: 0.00000071525574, y: 148.35704, z: 9.336105}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head_Parent_Boss
+      parentName: Bone_Head
+      position: {x: -0.29700255, y: 93.251526, z: -4.248902}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boss_Ears
+      parentName: Head_Parent_Boss
+      position: {x: 0.34670663, y: -44.433228, z: 5.2410746}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boss_Eyes
+      parentName: Head_Parent_Boss
+      position: {x: 0.4077785, y: -21.110794, z: -1.6866684}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boss_Head
+      parentName: Head_Parent_Boss
+      position: {x: -0.32679152, y: -209.76532, z: 16.150791}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boss_Mouth
+      parentName: Head_Parent_Boss
+      position: {x: -0.3127451, y: -21.378662, z: 2.5375118}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head_Parent_Imp
+      parentName: Bone_Head
+      position: {x: 0.00000071525574, y: -99.32223, z: 0.002632618}
+      rotation: {x: -0.000013298391, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Imp_Ears
+      parentName: Head_Parent_Imp
+      position: {x: 0.69053316, y: 166.76614, z: -5.0764065}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 100, y: 100.00001, z: 100.000015}
+    - name: Imp_Eyes
+      parentName: Head_Parent_Imp
+      position: {x: 0.83774304, y: 204.50938, z: 1.8040631}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 100, y: 100.00001, z: 100.000015}
+    - name: Imp_Head
+      parentName: Head_Parent_Imp
+      position: {x: -0.93279505, y: -100.79346, z: 30.664062}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 100, y: 100.00001, z: 100.000015}
+    - name: Imp_Mouth
+      parentName: Head_Parent_Imp
+      position: {x: -0.89894485, y: 204.07574, z: 8.640099}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 100, y: 100.00001, z: 100.000015}
+    - name: Head_Parent_Mage_Boy
+      parentName: Bone_Head
+      position: {x: 0.0000014305115, y: -99.322235, z: -0.000004053116}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mage_Ears_Boy
+      parentName: Head_Parent_Mage_Boy
+      position: {x: 0.00006580353, y: 131.48639, z: -6.743724}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.856131, y: 0.856131, z: 0.856131}
+    - name: Mage_Eyes_Boy
+      parentName: Head_Parent_Mage_Boy
+      position: {x: 0.00007176399, y: 148.35703, z: 9.308073}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mage_Hair_Boy
+      parentName: Head_Parent_Mage_Boy
+      position: {x: 0.000042438507, y: 148.51094, z: 3.1389377}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mage_Head_Boy
+      parentName: Head_Parent_Mage_Boy
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mage_Mouth_Boy
+      parentName: Head_Parent_Mage_Boy
+      position: {x: 24.35378, y: 148.51102, z: 3.4166515}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head_Parent_Mage_Girl
+      parentName: Bone_Head
+      position: {x: 0.0000014305115, y: -99.322235, z: -0.000004053116}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mage_Ears_Girl
+      parentName: Head_Parent_Mage_Girl
+      position: {x: -0.000030755997, y: 131.48633, z: -6.742197}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.856131, y: 0.856131, z: 0.856131}
+    - name: Mage_Eyes_Girl
+      parentName: Head_Parent_Mage_Girl
+      position: {x: -0.0000011920929, y: 148.35704, z: 9.308052}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mage_Hair_Girl
+      parentName: Head_Parent_Mage_Girl
+      position: {x: -0.000030755997, y: 169.33167, z: -25.155985}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mage_Head_Girl
+      parentName: Head_Parent_Mage_Girl
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mage_Mouth_Girl
+      parentName: Head_Parent_Mage_Girl
+      position: {x: 24.35381, y: 148.51106, z: 3.415941}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head_Parent_Rogue_Boy
+      parentName: Bone_Head
+      position: {x: 0.0000014305115, y: -99.322235, z: -0.000004053116}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rogue_Ears_Boy
+      parentName: Head_Parent_Rogue_Boy
+      position: {x: -0.00000023841858, y: -8.682825, z: -7.228368}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rogue_Eyes_Boy
+      parentName: Head_Parent_Rogue_Boy
+      position: {x: -0.0000011920929, y: 148.35704, z: 9.308052}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rogue_Hair_Boy
+      parentName: Head_Parent_Rogue_Boy
+      position: {x: 0.00000023841858, y: -0.00000023841858, z: -0.00003415346}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rogue_Head_Boy
+      parentName: Head_Parent_Rogue_Boy
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rogue_Mouth_Boy
+      parentName: Head_Parent_Rogue_Boy
+      position: {x: 0.00000071525574, y: 148.35704, z: 9.336105}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head_Parent_Rogue_Girl
+      parentName: Bone_Head
+      position: {x: 0.0000014305115, y: -99.322235, z: -0.000004053116}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rogue_Ears_Girl
+      parentName: Head_Parent_Rogue_Girl
+      position: {x: -1.5289314, y: -8.682825, z: -7.228367}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rogue_Eyes_Girl
+      parentName: Head_Parent_Rogue_Girl
+      position: {x: -0.0000011920929, y: 148.35704, z: 9.308052}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rogue_Hair_Girl
+      parentName: Head_Parent_Rogue_Girl
+      position: {x: -0.00000023841858, y: 169.33167, z: -25.155983}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rogue_Head_Girl
+      parentName: Head_Parent_Rogue_Girl
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rogue_Mouth_Girl
+      parentName: Head_Parent_Rogue_Girl
+      position: {x: 0.00000071525574, y: 148.35704, z: 9.336105}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head_Parent_Tank_Boy
+      parentName: Bone_Head
+      position: {x: 0.0000014305115, y: -99.322235, z: -0.000004053116}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tank_Ears_Boy
+      parentName: Head_Parent_Tank_Boy
+      position: {x: -0.00000071525574, y: 131.48633, z: -6.742197}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.856131, y: 0.856131, z: 0.856131}
+    - name: Tank_Eyes_Boy
+      parentName: Head_Parent_Tank_Boy
+      position: {x: -0.0000011920929, y: 148.35704, z: 9.308052}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tank_Hair_Boy
+      parentName: Head_Parent_Tank_Boy
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tank_Head_Boy
+      parentName: Head_Parent_Tank_Boy
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tank_Mouth_Boy
+      parentName: Head_Parent_Tank_Boy
+      position: {x: 0.000002861023, y: 112.05777, z: 53.615967}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Head_Parent_Tank_Girl
+      parentName: Bone_Head
+      position: {x: 0.0000014305115, y: -99.322235, z: -0.000004053116}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tank_Ears_Girl
+      parentName: Head_Parent_Tank_Girl
+      position: {x: 0.00000023841858, y: 131.48633, z: -6.742197}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.856131, y: 0.856131, z: 0.856131}
+    - name: Tank_Eyes_Girl
+      parentName: Head_Parent_Tank_Girl
+      position: {x: -0.0000011920929, y: 148.35704, z: 9.308052}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tank_Hair_Girl
+      parentName: Head_Parent_Tank_Girl
+      position: {x: 0.0000014305115, y: 169.33168, z: -25.155542}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tank_Head_Girl
+      parentName: Head_Parent_Tank_Girl
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tank_Mouth_Girl
+      parentName: Head_Parent_Tank_Girl
+      position: {x: -0.00000047683716, y: 148.357, z: 9.3361025}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bone_LeftArm
+      parentName: Bone_Spine
+      position: {x: -34.828667, y: -18.57362, z: -0.07679257}
+      rotation: {x: -0.019253243, y: -0.069937006, z: 0.713824, w: 0.6965583}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bone_LeftForeArm
+      parentName: Bone_LeftArm
+      position: {x: -40, y: 0.0000008393866, z: -2.680915}
+      rotation: {x: -0.07118579, y: 0.101959765, z: 0.020563422, w: 0.9920252}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bone_LeftHand
+      parentName: Bone_LeftForeArm
+      position: {x: -34.999985, y: 0.000016468699, z: 2.6809158}
+      rotation: {x: -0.4547743, y: 0.38623378, z: 0.4618158, w: 0.65630025}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Archer_Hand_Lt_Boy
+      parentName: Bone_LeftHand
+      position: {x: 92.7072, y: -86.04759, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Archer_Hand_Lt_Girl
+      parentName: Bone_LeftHand
+      position: {x: 92.7072, y: -86.04759, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boss_Glove_Lt
+      parentName: Bone_LeftHand
+      position: {x: -15.063471, y: -0.56256104, z: -0.0000076293945}
+      rotation: {x: -0.00000006050417, y: -0.0040201643, z: 0.99999195, w: 0.000015050053}
+      scale: {x: 1, y: 1.000001, z: 0.999999}
+    - name: Boss_WeaponL
+      parentName: Bone_LeftHand
+      position: {x: -37.6016, y: -15.542717, z: 6.0842056}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Imp_Glove_Lt
+      parentName: Bone_LeftHand
+      position: {x: -15.063486, y: -0.5625534, z: -0.000015258789}
+      rotation: {x: -0.000000066579034, y: -0.000000043711385, z: -0.00000011029043, w: 1}
+      scale: {x: 100, y: 99.999985, z: 100}
+    - name: Mage_Hand_Lt1_Boy
+      parentName: Bone_LeftHand
+      position: {x: -14.748636, y: -3.1288147, z: -1.3515778}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mage_Hand_Lt1_Girl
+      parentName: Bone_LeftHand
+      position: {x: -14.748636, y: -3.1288147, z: -1.3515778}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rogue_Hand_Lt_Boy
+      parentName: Bone_LeftHand
+      position: {x: 92.7072, y: -86.04759, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rogue_Hand_Lt_Girl
+      parentName: Bone_LeftHand
+      position: {x: 92.7072, y: -86.04759, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tank_Glove_Lt_Boy
+      parentName: Bone_LeftHand
+      position: {x: 92.7072, y: -86.04759, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tank_Glove_Lt_Girl
+      parentName: Bone_LeftHand
+      position: {x: 92.7072, y: -86.04759, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tank_Shield_Boy
+      parentName: Bone_LeftHand
+      position: {x: -19.991007, y: -9.586601, z: -4.97966}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tank_Shield_Girl
+      parentName: Bone_LeftHand
+      position: {x: -19.991007, y: -9.586601, z: -4.97966}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Gear_LS_Boss_ShoulderPad_Boss
+      parentName: Bone_LeftArm
+      position: {x: -20.974041, y: 4.4990463, z: -0.644907}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Gear_LS_Boss_ShoulderPad_Imp
+      parentName: Bone_LeftArm
+      position: {x: -13.301277, y: 8.450752, z: -0.3962593}
+      rotation: {x: -0.00000006657903, y: 4.432767e-15, z: -0.00000006657903, w: 1}
+      scale: {x: 100, y: 100, z: 99.99999}
+    - name: Gear_LS_Tank_ShoulderPad_Boy
+      parentName: Bone_LeftArm
+      position: {x: 17.707241, y: -86.04756, z: -0.0000019073486}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Gear_LS_Tank_ShoulderPad_Girl
+      parentName: Bone_LeftArm
+      position: {x: 17.707241, y: -86.04756, z: -0.0000019073486}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bone_RightArm
+      parentName: Bone_Spine
+      position: {x: -33.391766, y: 17.659916, z: -0.0063638664}
+      rotation: {x: -0.59329593, y: 0.80107135, z: 0.042007033, w: 0.06723151}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bone_RightForeArm
+      parentName: Bone_RightArm
+      position: {x: -40, y: 0.0000029827952, z: 2.680919}
+      rotation: {x: 0.3627039, y: -0.14473887, z: 0.05265844, w: 0.9190885}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bone_RightHand
+      parentName: Bone_RightForeArm
+      position: {x: -35.000004, y: -0.00000046211304, z: -2.6809113}
+      rotation: {x: -0.4409941, y: 0.81779784, z: 0.35079184, w: 0.11694485}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Archer_Hand_Rt_Boy
+      parentName: Bone_RightHand
+      position: {x: -92.707245, y: -86.04758, z: 0.0000076293945}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Archer_Hand_Rt_Girl
+      parentName: Bone_RightHand
+      position: {x: -92.707245, y: -86.04758, z: 0.0000076293945}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Archer_weapon_Boy
+      parentName: Bone_RightHand
+      position: {x: -0.067899704, y: -6.548729, z: -0.04371643}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Archer_weapon_Girl
+      parentName: Bone_RightHand
+      position: {x: -0.067899704, y: -6.548729, z: -0.04371643}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boss_Glove_Rt
+      parentName: Bone_RightHand
+      position: {x: 12.89085, y: -0.5622406, z: -2.3859558}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boss_WeaponR
+      parentName: Bone_RightHand
+      position: {x: 37.48201, y: -14.986294, z: 6.1115417}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Imp_Glove_Rt
+      parentName: Bone_RightHand
+      position: {x: 12.8908615, y: -0.5622368, z: -2.3859558}
+      rotation: {x: -0.00000006657903, y: 4.432767e-15, z: -0.00000006657903, w: 1}
+      scale: {x: 100.00001, y: 99.99999, z: 99.99999}
+    - name: Imp_WeaponR
+      parentName: Bone_RightHand
+      position: {x: 37.481815, y: -14.9863205, z: 6.1115265}
+      rotation: {x: -0.00000006657903, y: 4.432767e-15, z: -0.00000006657903, w: 1}
+      scale: {x: 100.00001, y: 99.99999, z: 99.99999}
+    - name: Mage_Hand_Rt_Boy
+      parentName: Bone_RightHand
+      position: {x: 12.516148, y: -3.1288605, z: -1.3515625}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mage_Hand_Rt_Girl
+      parentName: Bone_RightHand
+      position: {x: 12.516148, y: -3.1288605, z: -1.3515625}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mage_Weapon_Boy
+      parentName: Bone_RightHand
+      position: {x: 12.885166, y: -4.0088196, z: 22.168991}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mage_Weapon_Girl
+      parentName: Bone_RightHand
+      position: {x: 12.885166, y: -4.0088196, z: 22.168991}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rogue_Hand_Rt_Boy
+      parentName: Bone_RightHand
+      position: {x: -92.707245, y: -86.04758, z: 0.0000076293945}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rogue_Hand_Rt_Girl
+      parentName: Bone_RightHand
+      position: {x: -92.707245, y: -86.04758, z: 0.0000076293945}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rogue_Weapon_Boy
+      parentName: Bone_RightHand
+      position: {x: 14.610222, y: -3.3644562, z: 21.182846}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rogue_Weapon_Girl
+      parentName: Bone_RightHand
+      position: {x: 14.610222, y: -3.3644562, z: 21.182846}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tank_Glove_Rt_Boy
+      parentName: Bone_RightHand
+      position: {x: 11.502487, y: -0.9710541, z: -0.18229675}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tank_Glove_Rt_Girl
+      parentName: Bone_RightHand
+      position: {x: 11.502487, y: -0.9710541, z: -0.18229675}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tank_Weapon_Boy
+      parentName: Bone_RightHand
+      position: {x: 22.374321, y: -3.6189651, z: 30.211304}
+      rotation: {x: 0.00000022165477, y: -3.3029135e-15, z: -0.000000014901161, w: 1}
+      scale: {x: 0.999999, y: 1, z: 1}
+    - name: Tank_Weapon_Girl
+      parentName: Bone_RightHand
+      position: {x: 22.374321, y: -3.6189651, z: 30.211304}
+      rotation: {x: 0.00000022165477, y: -3.3029135e-15, z: -0.000000014901161, w: 1}
+      scale: {x: 0.999999, y: 1, z: 1}
+    - name: Gear_RS_Boss_ShoulderPad_Boss
+      parentName: Bone_RightArm
+      position: {x: -20.62208, y: 5.0905075, z: -0.24470043}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Gear_RS_Tank_ShoulderPad_Boy
+      parentName: Bone_RightArm
+      position: {x: 17.70731, y: -86.047585, z: 0.0000076293945}
+      rotation: {x: 6.123234e-17, y: 1, z: -6.123234e-17, w: -6.123234e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Gear_RS_Tank_ShoulderPad_Girl
+      parentName: Bone_RightArm
+      position: {x: 17.70731, y: -86.047585, z: 0.0000076293945}
+      rotation: {x: 6.123234e-17, y: 1, z: -6.123234e-17, w: -6.123234e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Gear_LS_Archer_Quiver_Boy
+      parentName: Bone_Spine
+      position: {x: -53.217487, y: -45.060722, z: -33.072945}
+      rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Gear_LS_Archer_Quiver_Girl
+      parentName: Bone_Spine
+      position: {x: -53.217487, y: -45.060722, z: -33.072945}
+      rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Boss_Cape
+      parentName: CharacterSet(Clone)
+      position: {x: 0.000000014305114, y: 0.7420517, z: -0.42274573}
+      rotation: {x: -2.6934462e-25, y: 4.32978e-17, z: -0.7071067, w: 0.7071068}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: Boss_Torso
+      parentName: CharacterSet(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: Imp_Torso
+      parentName: CharacterSet(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Imp_weapon_bomb
+      parentName: CharacterSet(Clone)
+      position: {x: -1.3813009, y: 0.59155273, z: 0.7733805}
+      rotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mage_Torso_Boy
+      parentName: CharacterSet(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: Mage_Torso_Girl
+      parentName: CharacterSet(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: Rogue_Torso_Boy
+      parentName: CharacterSet(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: Rogue_Torso_Girl
+      parentName: CharacterSet(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: Tank_Torso_Boy
+      parentName: CharacterSet(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: Tank_Torso_Girl
+      parentName: CharacterSet(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -4160,11 +5020,11 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  autoGenerateAvatarMappingIfUnspecified: 0
+  animationType: 3
   humanoidOversampling: 1
   avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 0
