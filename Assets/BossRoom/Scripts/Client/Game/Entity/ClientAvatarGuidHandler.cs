@@ -46,7 +46,10 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
             var graphicsGameObject = Instantiate(m_NetworkAvatarGuidState.RegisteredAvatar.Graphics, root);
             Debug.Log(graphicsGameObject.name);
             ClientCharacterVisualization clientCharacterVisualization = graphicsGameObject.GetComponent<ClientCharacterVisualization>();
-            m_GraphicsAnimator = clientCharacterVisualization.OurAnimator;
+            if (clientCharacterVisualization == null)
+                clientCharacterVisualization = graphicsGameObject.GetComponentInParent<ClientCharacterVisualization>();
+            if (m_GraphicsAnimator == null)
+                m_GraphicsAnimator = clientCharacterVisualization.OurAnimator;
             m_ClientCharacter.SetCharacterVisualization(clientCharacterVisualization);
 
             m_GraphicsAnimator.Rebind();

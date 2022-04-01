@@ -553,11 +553,19 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 0
     motionNodeName: 
-    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
-      human bone 'LeftLowerArm' not found\n"
+    rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: 
+    animationImportWarnings: "\nClip 'Take 001' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar
+      to improve retargeting quality.\n\t'Bone_Spine' has translation animation that
+      will be discarded.\n\t'Bone_Head' has translation animation that will be discarded.\n\t'Bone_LeftArm'
+      has translation animation that will be discarded.\n\t'Bone_LeftForeArm' has
+      translation animation that will be discarded.\n\t'Bone_LeftHand' has translation
+      animation that will be discarded.\n\t'Bone_RightArm' has translation animation
+      that will be discarded.\n\t'Bone_RightForeArm' has translation animation that
+      will be discarded.\n\t'Bone_RightHand' has translation animation that will
+      be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -4345,71 +4353,66 @@ ModelImporter:
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: Boss_Cape
+      parentName: CharacterSet(Clone)
+      position: {x: 0.000000014305114, y: 0.7420517, z: -0.42274573}
+      rotation: {x: -2.6934462e-25, y: 4.32978e-17, z: -0.7071067, w: 0.7071068}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: Boss_Torso
+      parentName: CharacterSet(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: Imp_Torso
+      parentName: CharacterSet(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Imp_weapon_bomb
+      parentName: CharacterSet(Clone)
+      position: {x: -1.3813009, y: 0.59155273, z: 0.7733805}
+      rotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mage_Torso_Boy
+      parentName: CharacterSet(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: Mage_Torso_Girl
+      parentName: CharacterSet(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: Rogue_Torso_Boy
+      parentName: CharacterSet(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: Rogue_Torso_Girl
+      parentName: CharacterSet(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: Tank_Torso_Boy
+      parentName: CharacterSet(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: Tank_Torso_Girl
+      parentName: CharacterSet(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
     - name: Bone_Hips
       parentName: CharacterSet(Clone)
-      position: {x: 0.0038480463, y: 0.43870667, z: 0.066061}
-      rotation: {x: 0.000000065843054, y: 0.1482771, z: -0.000000009872146, w: 0.98894584}
+      position: {x: 0.0038480463, y: 0.46870503, z: 0.066061}
+      rotation: {x: 3.3087225e-24, y: -0, z: -0, w: 1}
       scale: {x: 0.01, y: 0.01, z: 0.01}
-    - name: Bone_LeftUpLeg
-      parentName: Bone_Hips
-      position: {x: -12.124996, y: -6.2700005, z: 0.00000047683716}
-      rotation: {x: -0.16642484, y: 0.2249292, z: 0.6370745, w: 0.71822405}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Bone_LeftLeg
-      parentName: Bone_LeftUpLeg
-      position: {x: -12.253839, y: 0.0000038146973, z: 1.1773338}
-      rotation: {x: 0.0000003076438, y: -0.41918507, z: 0.0000005760104, w: 0.9079008}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Bone_LeftFoot
-      parentName: Bone_LeftLeg
-      position: {x: -16.016098, y: -0.0000038146973, z: -1.1773331}
-      rotation: {x: 0.40439138, y: 0.36623764, z: -0.3700384, w: 0.75193703}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Bone_Toe
-      parentName: Bone_LeftFoot
-      position: {x: -17.097847, y: -0.0000019073486, z: 0.000002861023}
-      rotation: {x: -0.006260158, y: -0.017097332, z: -0.3515095, w: 0.93600726}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Bone_RightUpLeg
-      parentName: Bone_Hips
-      position: {x: 12.125002, y: -6.2700005, z: 0.00000047683716}
-      rotation: {x: 0.0458627, y: -0.01209627, z: 0.8432042, w: 0.5354969}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Bone_RightLeg
-      parentName: Bone_RightUpLeg
-      position: {x: -12.253788, y: 0, z: 1.1773314}
-      rotation: {x: 0.00000020682089, y: -0.35341805, z: 0.00000054743606, w: 0.9354655}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Bone_RightFoot
-      parentName: Bone_RightLeg
-      position: {x: -16.016102, y: 0, z: -1.1773338}
-      rotation: {x: 0.61722183, y: 0.32762015, z: -0.33912244, w: 0.6298399}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Bone_Toe 1
-      parentName: Bone_RightFoot
-      position: {x: -17.097908, y: 0.0000023841858, z: -0.0000038146973}
-      rotation: {x: 0.1464274, y: -0.09395267, z: -0.6058485, w: 0.77632433}
-      scale: {x: 1, y: 1, z: 1}
     - name: Bone_Spine
       parentName: Bone_Hips
       position: {x: 0.00000028616083, y: 7.000004, z: -0.00000005435899}
-      rotation: {x: -0.1449632, y: 0.14398864, z: -0.70044965, w: 0.6838299}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Bone_Cloak_Base
-      parentName: Bone_Spine
-      position: {x: -53.73846, y: 0.00000047683716, z: -17.79264}
-      rotation: {x: -0.27336612, y: 0.65215385, z: -0.6521329, w: -0.2732931}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Bone_Cloak_Mid
-      parentName: Bone_Cloak_Base
-      position: {x: -22.422615, y: 0.004333496, z: 0.0023524696}
-      rotation: {x: -0.000042478994, y: -0.000083590836, z: 0.36198187, w: 0.9321852}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Bone_Cloak_End
-      parentName: Bone_Cloak_Mid
-      position: {x: -35.08917, y: 0, z: -0.0000009536743}
-      rotation: {x: 6.904143e-17, y: -1.3528822e-17, z: -0.16111998, w: 0.98693484}
-      scale: {x: 1, y: 1, z: 1}
+      rotation: {x: -0.000000015454312, y: -0.000000015454312, z: -0.7071068, w: 0.7071068}
+      scale: {x: 1.0000005, y: 1.0000004, z: 0.9999999}
     - name: Bone_Head
       parentName: Bone_Spine
       position: {x: -44.643845, y: -0.0000033143208, z: -0.000001930621}
@@ -4720,120 +4723,45 @@ ModelImporter:
       position: {x: -0.00000047683716, y: 148.357, z: 9.3361025}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Bone_LeftArm
+    - name: Gear_LS_Archer_Quiver_Boy
       parentName: Bone_Spine
-      position: {x: -34.828667, y: -18.57362, z: -0.07679257}
-      rotation: {x: -0.019253243, y: -0.069937006, z: 0.713824, w: 0.6965583}
+      position: {x: -53.217487, y: -45.060722, z: -33.072945}
+      rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
-    - name: Bone_LeftForeArm
-      parentName: Bone_LeftArm
-      position: {x: -40, y: 0.0000008393866, z: -2.680915}
-      rotation: {x: -0.07118579, y: 0.101959765, z: 0.020563422, w: 0.9920252}
+    - name: Gear_LS_Archer_Quiver_Girl
+      parentName: Bone_Spine
+      position: {x: -53.217487, y: -45.060722, z: -33.072945}
+      rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
       scale: {x: 1, y: 1, z: 1}
-    - name: Bone_LeftHand
-      parentName: Bone_LeftForeArm
-      position: {x: -34.999985, y: 0.000016468699, z: 2.6809158}
-      rotation: {x: -0.4547743, y: 0.38623378, z: 0.4618158, w: 0.65630025}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Archer_Hand_Lt_Boy
-      parentName: Bone_LeftHand
-      position: {x: 92.7072, y: -86.04759, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Archer_Hand_Lt_Girl
-      parentName: Bone_LeftHand
-      position: {x: 92.7072, y: -86.04759, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Boss_Glove_Lt
-      parentName: Bone_LeftHand
-      position: {x: -15.063471, y: -0.56256104, z: -0.0000076293945}
-      rotation: {x: -0.00000006050417, y: -0.0040201643, z: 0.99999195, w: 0.000015050053}
-      scale: {x: 1, y: 1.000001, z: 0.999999}
-    - name: Boss_WeaponL
-      parentName: Bone_LeftHand
-      position: {x: -37.6016, y: -15.542717, z: 6.0842056}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Imp_Glove_Lt
-      parentName: Bone_LeftHand
-      position: {x: -15.063486, y: -0.5625534, z: -0.000015258789}
-      rotation: {x: -0.000000066579034, y: -0.000000043711385, z: -0.00000011029043, w: 1}
-      scale: {x: 100, y: 99.999985, z: 100}
-    - name: Mage_Hand_Lt1_Boy
-      parentName: Bone_LeftHand
-      position: {x: -14.748636, y: -3.1288147, z: -1.3515778}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Mage_Hand_Lt1_Girl
-      parentName: Bone_LeftHand
-      position: {x: -14.748636, y: -3.1288147, z: -1.3515778}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Rogue_Hand_Lt_Boy
-      parentName: Bone_LeftHand
-      position: {x: 92.7072, y: -86.04759, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Rogue_Hand_Lt_Girl
-      parentName: Bone_LeftHand
-      position: {x: 92.7072, y: -86.04759, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Tank_Glove_Lt_Boy
-      parentName: Bone_LeftHand
-      position: {x: 92.7072, y: -86.04759, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Tank_Glove_Lt_Girl
-      parentName: Bone_LeftHand
-      position: {x: 92.7072, y: -86.04759, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Tank_Shield_Boy
-      parentName: Bone_LeftHand
-      position: {x: -19.991007, y: -9.586601, z: -4.97966}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Tank_Shield_Girl
-      parentName: Bone_LeftHand
-      position: {x: -19.991007, y: -9.586601, z: -4.97966}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Gear_LS_Boss_ShoulderPad_Boss
-      parentName: Bone_LeftArm
-      position: {x: -20.974041, y: 4.4990463, z: -0.644907}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Gear_LS_Boss_ShoulderPad_Imp
-      parentName: Bone_LeftArm
-      position: {x: -13.301277, y: 8.450752, z: -0.3962593}
-      rotation: {x: -0.00000006657903, y: 4.432767e-15, z: -0.00000006657903, w: 1}
-      scale: {x: 100, y: 100, z: 99.99999}
-    - name: Gear_LS_Tank_ShoulderPad_Boy
-      parentName: Bone_LeftArm
-      position: {x: 17.707241, y: -86.04756, z: -0.0000019073486}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Gear_LS_Tank_ShoulderPad_Girl
-      parentName: Bone_LeftArm
-      position: {x: 17.707241, y: -86.04756, z: -0.0000019073486}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
+    - name: Bone_Cloak_Base
+      parentName: Bone_Spine
+      position: {x: -53.73846, y: 0.00000047683716, z: -17.79264}
+      rotation: {x: 0.27334037, y: -0.6521388, z: 0.6521388, w: 0.2733405}
+      scale: {x: 1.0000001, y: 1.0000001, z: 1.0000002}
+    - name: Bone_Cloak_Mid
+      parentName: Bone_Cloak_Base
+      position: {x: -22.422615, y: 0.004333496, z: 0.0023524696}
+      rotation: {x: -0.000000044703484, y: -0.000000029802322, z: 0.36190408, w: 0.9322154}
+      scale: {x: 1.0000004, y: 1.0000001, z: 1.0000002}
+    - name: Bone_Cloak_End
+      parentName: Bone_Cloak_Mid
+      position: {x: -35.08917, y: 0, z: -0.0000009536743}
+      rotation: {x: -0.000000010235055, y: -0.00000005265659, z: -0.16111995, w: 0.9869349}
+      scale: {x: 1.0000004, y: 1.0000001, z: 1.0000001}
     - name: Bone_RightArm
       parentName: Bone_Spine
       position: {x: -33.391766, y: 17.659916, z: -0.0063638664}
-      rotation: {x: -0.59329593, y: 0.80107135, z: 0.042007033, w: 0.06723151}
-      scale: {x: 1, y: 1, z: 1}
+      rotation: {x: -0.7071068, y: 0.7071068, z: 0.000000015454312, w: -0.000000015454312}
+      scale: {x: 1.0000031, y: 0.99999994, z: 1.0000015}
     - name: Bone_RightForeArm
       parentName: Bone_RightArm
       position: {x: -40, y: 0.0000029827952, z: 2.680919}
-      rotation: {x: 0.3627039, y: -0.14473887, z: 0.05265844, w: 0.9190885}
+      rotation: {x: 0.3700017, y: 0.001835912, z: 0.021433616, w: 0.928782}
       scale: {x: 1, y: 1, z: 1}
     - name: Bone_RightHand
       parentName: Bone_RightForeArm
       position: {x: -35.000004, y: -0.00000046211304, z: -2.6809113}
-      rotation: {x: -0.4409941, y: 0.81779784, z: 0.35079184, w: 0.11694485}
+      rotation: {x: 0.13358134, y: 0.91205424, z: 0.38720074, w: 0.019714938}
       scale: {x: 1, y: 1, z: 1}
     - name: Archer_Hand_Rt_Boy
       parentName: Bone_RightHand
@@ -4950,66 +4878,146 @@ ModelImporter:
       position: {x: 17.70731, y: -86.047585, z: 0.0000076293945}
       rotation: {x: 6.123234e-17, y: 1, z: -6.123234e-17, w: -6.123234e-17}
       scale: {x: 1, y: 1, z: 1}
-    - name: Gear_LS_Archer_Quiver_Boy
+    - name: Bone_LeftArm
       parentName: Bone_Spine
-      position: {x: -53.217487, y: -45.060722, z: -33.072945}
-      rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+      position: {x: -34.828667, y: -18.57362, z: -0.07679257}
+      rotation: {x: 0.000000015454312, y: 0.000000015454312, z: 0.7071068, w: 0.7071068}
+      scale: {x: 1, y: 1.0000001, z: 0.99999994}
+    - name: Bone_LeftForeArm
+      parentName: Bone_LeftArm
+      position: {x: -40, y: 0.0000008393866, z: -2.680915}
+      rotation: {x: -0.07236677, y: -0.0020550666, z: 0.0073759537, w: 0.9973488}
       scale: {x: 1, y: 1, z: 1}
-    - name: Gear_LS_Archer_Quiver_Girl
-      parentName: Bone_Spine
-      position: {x: -53.217487, y: -45.060722, z: -33.072945}
-      rotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+    - name: Bone_LeftHand
+      parentName: Bone_LeftForeArm
+      position: {x: -34.999985, y: 0.000016468699, z: 2.6809158}
+      rotation: {x: -0.5359302, y: -0.008577641, z: -0.11152069, w: 0.8368204}
       scale: {x: 1, y: 1, z: 1}
-    - name: Boss_Cape
-      parentName: CharacterSet(Clone)
-      position: {x: 0.000000014305114, y: 0.7420517, z: -0.42274573}
-      rotation: {x: -2.6934462e-25, y: 4.32978e-17, z: -0.7071067, w: 0.7071068}
-      scale: {x: 0.01, y: 0.01, z: 0.01}
-    - name: Boss_Torso
-      parentName: CharacterSet(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 0.01, y: 0.01, z: 0.01}
-    - name: Imp_Torso
-      parentName: CharacterSet(Clone)
-      position: {x: -0, y: 0, z: 0}
+    - name: Archer_Hand_Lt_Boy
+      parentName: Bone_LeftHand
+      position: {x: 92.7072, y: -86.04759, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Imp_weapon_bomb
-      parentName: CharacterSet(Clone)
-      position: {x: -1.3813009, y: 0.59155273, z: 0.7733805}
-      rotation: {x: 0.000000021855694, y: -0, z: -0, w: 1}
+    - name: Archer_Hand_Lt_Girl
+      parentName: Bone_LeftHand
+      position: {x: 92.7072, y: -86.04759, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
-    - name: Mage_Torso_Boy
-      parentName: CharacterSet(Clone)
-      position: {x: -0, y: 0, z: 0}
+    - name: Boss_Glove_Lt
+      parentName: Bone_LeftHand
+      position: {x: -15.063471, y: -0.56256104, z: -0.0000076293945}
+      rotation: {x: -0.00000006050417, y: -0.0040201643, z: 0.99999195, w: 0.000015050053}
+      scale: {x: 1, y: 1.000001, z: 0.999999}
+    - name: Boss_WeaponL
+      parentName: Bone_LeftHand
+      position: {x: -37.6016, y: -15.542717, z: 6.0842056}
       rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 0.01, y: 0.01, z: 0.01}
-    - name: Mage_Torso_Girl
-      parentName: CharacterSet(Clone)
-      position: {x: -0, y: 0, z: 0}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Imp_Glove_Lt
+      parentName: Bone_LeftHand
+      position: {x: -15.063486, y: -0.5625534, z: -0.000015258789}
+      rotation: {x: -0.000000066579034, y: -0.000000043711385, z: -0.00000011029043, w: 1}
+      scale: {x: 100, y: 99.999985, z: 100}
+    - name: Mage_Hand_Lt1_Boy
+      parentName: Bone_LeftHand
+      position: {x: -14.748636, y: -3.1288147, z: -1.3515778}
       rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 0.01, y: 0.01, z: 0.01}
-    - name: Rogue_Torso_Boy
-      parentName: CharacterSet(Clone)
-      position: {x: -0, y: 0, z: 0}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Mage_Hand_Lt1_Girl
+      parentName: Bone_LeftHand
+      position: {x: -14.748636, y: -3.1288147, z: -1.3515778}
       rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 0.01, y: 0.01, z: 0.01}
-    - name: Rogue_Torso_Girl
-      parentName: CharacterSet(Clone)
-      position: {x: -0, y: 0, z: 0}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rogue_Hand_Lt_Boy
+      parentName: Bone_LeftHand
+      position: {x: 92.7072, y: -86.04759, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 0.01, y: 0.01, z: 0.01}
-    - name: Tank_Torso_Boy
-      parentName: CharacterSet(Clone)
-      position: {x: -0, y: 0, z: 0}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Rogue_Hand_Lt_Girl
+      parentName: Bone_LeftHand
+      position: {x: 92.7072, y: -86.04759, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 0.01, y: 0.01, z: 0.01}
-    - name: Tank_Torso_Girl
-      parentName: CharacterSet(Clone)
-      position: {x: -0, y: 0, z: 0}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tank_Glove_Lt_Boy
+      parentName: Bone_LeftHand
+      position: {x: 92.7072, y: -86.04759, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 0.01, y: 0.01, z: 0.01}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tank_Glove_Lt_Girl
+      parentName: Bone_LeftHand
+      position: {x: 92.7072, y: -86.04759, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tank_Shield_Boy
+      parentName: Bone_LeftHand
+      position: {x: -19.991007, y: -9.586601, z: -4.97966}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tank_Shield_Girl
+      parentName: Bone_LeftHand
+      position: {x: -19.991007, y: -9.586601, z: -4.97966}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Gear_LS_Boss_ShoulderPad_Boss
+      parentName: Bone_LeftArm
+      position: {x: -20.974041, y: 4.4990463, z: -0.644907}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Gear_LS_Boss_ShoulderPad_Imp
+      parentName: Bone_LeftArm
+      position: {x: -13.301277, y: 8.450752, z: -0.3962593}
+      rotation: {x: -0.00000006657903, y: 4.432767e-15, z: -0.00000006657903, w: 1}
+      scale: {x: 100, y: 100, z: 99.99999}
+    - name: Gear_LS_Tank_ShoulderPad_Boy
+      parentName: Bone_LeftArm
+      position: {x: 17.707241, y: -86.04756, z: -0.0000019073486}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Gear_LS_Tank_ShoulderPad_Girl
+      parentName: Bone_LeftArm
+      position: {x: 17.707241, y: -86.04756, z: -0.0000019073486}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Bone_RightUpLeg
+      parentName: Bone_Hips
+      position: {x: 12.125002, y: -6.2700005, z: 0.00000047683716}
+      rotation: {x: -0.000000015454312, y: 0.000000015454312, z: 0.7071068, w: 0.7071068}
+      scale: {x: 1.0000004, y: 1.0000004, z: 0.9999999}
+    - name: Bone_RightLeg
+      parentName: Bone_RightUpLeg
+      position: {x: -12.253788, y: 0, z: 1.1773314}
+      rotation: {x: -0, y: -0, z: 2.388357e-16, w: 1}
+      scale: {x: 1.0000011, y: 1.0000011, z: 1}
+    - name: Bone_RightFoot
+      parentName: Bone_RightLeg
+      position: {x: -16.016102, y: 0, z: -1.1773338}
+      rotation: {x: 0.6308451, y: 0.28953394, z: -0.30027476, w: 0.65424734}
+      scale: {x: 1.0000012, y: 0.9999999, z: 1.0000014}
+    - name: Bone_Toe 1
+      parentName: Bone_RightFoot
+      position: {x: -17.097908, y: 0.0000023841858, z: -0.0000038146973}
+      rotation: {x: 0.0062906137, y: 0.01708625, z: -0.34983888, w: 0.93663293}
+      scale: {x: 1.0000043, y: 0.9999981, z: 1.0000027}
+    - name: Bone_LeftUpLeg
+      parentName: Bone_Hips
+      position: {x: -12.124996, y: -6.2700005, z: 0.00000047683716}
+      rotation: {x: -0.000000015454312, y: 0.000000015454312, z: 0.7071068, w: 0.7071068}
+      scale: {x: 1.0000004, y: 1.0000004, z: 1.0000001}
+    - name: Bone_LeftLeg
+      parentName: Bone_LeftUpLeg
+      position: {x: -12.253839, y: 0.0000038146973, z: 1.1773338}
+      rotation: {x: -0, y: -0, z: 2.388357e-16, w: 1}
+      scale: {x: 1.0000011, y: 1.0000012, z: 0.9999999}
+    - name: Bone_LeftFoot
+      parentName: Bone_LeftLeg
+      position: {x: -16.016098, y: -0.0000038146973, z: -1.1773331}
+      rotation: {x: 0.6542473, y: 0.30027464, z: -0.28953406, w: 0.6308452}
+      scale: {x: 1.0000012, y: 0.9999999, z: 1.0000007}
+    - name: Bone_Toe
+      parentName: Bone_LeftFoot
+      position: {x: -17.097847, y: -0.0000019073486, z: 0.000002861023}
+      rotation: {x: -0.0062602162, y: -0.017097337, z: -0.3515095, w: 0.9360072}
+      scale: {x: 1.0000031, y: 0.99999845, z: 1.0000021}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5

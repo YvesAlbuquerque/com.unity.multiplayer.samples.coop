@@ -28,6 +28,9 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
         [SerializeField]
         NetworkCharacterState m_NetworkCharacterState;
 
+        [HideInInspector]
+        public Vector3 movementVector;
+
         private NavigationSystem m_NavigationSystem;
 
         private DynamicNavPath m_NavPath;
@@ -169,7 +172,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             if (m_MovementState == MovementState.Idle)
                 return;
 
-            Vector3 movementVector;
+            
 
             if (m_MovementState == MovementState.Charging)
             {

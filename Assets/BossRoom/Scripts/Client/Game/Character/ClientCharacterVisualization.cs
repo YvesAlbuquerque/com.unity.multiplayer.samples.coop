@@ -64,6 +64,8 @@ namespace Unity.Multiplayer.Samples.BossRoom.Visual
 
         public ulong NetworkObjectId => m_NetState.NetworkObjectId;
 
+        Vector2 targetDirection = new Vector2(0,0);
+
         Vector3 m_LerpedPosition;
 
         Quaternion m_LerpedRotation;
@@ -239,6 +241,14 @@ namespace Unity.Multiplayer.Samples.BossRoom.Visual
             }
         }
 
+        private Vector2 GetVisualMovementDirection(Vector3 movement)
+        {
+            Vector3 movementDirection = movement - m_PhysicsWrapper.Transform.position;
+            targetDirection.y = Vector3.Dot(movementDirection, m_PhysicsWrapper.Transform.forward);
+            targetDirection.x = Vector3.Dot(movementDirection, m_PhysicsWrapper.Transform.right);
+            return targetDirection.normalized;
+        }
+
         void Update()
         {
             if (Parent == null)
@@ -247,6 +257,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Visual
                 Destroy(gameObject);
                 return;
             }
+
 
             // On the host, Characters are translated via ServerCharacterMovement's FixedUpdate method. To ensure that
             // the game camera tracks a GameObject moving in the Update loop and therefore eliminate any camera jitter,
@@ -257,10 +268,8 @@ namespace Unity.Multiplayer.Samples.BossRoom.Visual
                 // Note: a cached position (m_LerpedPosition) and rotation (m_LerpedRotation) are created and used as
                 // the starting point for each interpolation since the root's position and rotation are modified in
                 // FixedUpdate, thus altering this transform (being a child) in the process.
-                m_LerpedPosition = m_PositionLerper.LerpPosition(m_LerpedPosition,
-                    m_PhysicsWrapper.Transform.position);
-                m_LerpedRotation = m_RotationLerper.LerpRotation(m_LerpedRotation,
-                    m_PhysicsWrapper.Transform.rotation);
+                m_LerpedPosition = m_PositionLerper.LerpPosition(m_LerpedPosition, m_PhysicsWrapper.Transform.position);
+                m_LerpedRotation = m_RotationLerper.LerpRotation(m_LerpedRotation, m_PhysicsWrapper.Transform.rotation);
                 transform.SetPositionAndRotation(m_LerpedPosition, m_LerpedRotation);
             }
 
@@ -268,6 +277,10 @@ namespace Unity.Multiplayer.Samples.BossRoom.Visual
             {
                 // set Animator variables here
                 OurAnimator.SetFloat(m_VisualizationConfiguration.SpeedVariableID, GetVisualMovementSpeed());
+                Vector2 direction = GetVisualMovementDirection(m_LerpedPosition);
+                Debug.Log("Direction:" + direction);
+                OurAnimator.SetFloat(m_VisualizationConfiguration.ForwardVariableID, direction.y);
+                OurAnimator.SetFloat(m_VisualizationConfiguration.RightVariableID, direction.x);
             }
 
             m_ActionViz.Update();

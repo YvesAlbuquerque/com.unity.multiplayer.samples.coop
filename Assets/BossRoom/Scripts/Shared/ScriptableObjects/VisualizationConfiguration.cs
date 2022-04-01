@@ -25,6 +25,13 @@ namespace Unity.Multiplayer.Samples.BossRoom
         [Header("Other Animation Variables")]
         [Tooltip("Variable that drives the character's movement animations")]
         [SerializeField] string m_SpeedVariable = "Speed";
+
+        [Tooltip("Variable that drives the character's movement animations")]
+        [SerializeField] string m_ForwardVariable = "Forward";
+
+        [Tooltip("Variable that drives the character's movement animations")]
+        [SerializeField] string m_RightVariable = "Right";
+
         [Tooltip("Tag that should be on the \"do nothing\" default nodes of each animator layer")]
         [SerializeField] string m_BaseNodeTag = "BaseNode";
 
@@ -63,6 +70,8 @@ namespace Unity.Multiplayer.Samples.BossRoom
         [SerializeField] [HideInInspector] public int EntryDeathTriggerID;
         [SerializeField] [HideInInspector] public int EntryFaintedTriggerID;
         [SerializeField] [HideInInspector] public int SpeedVariableID;
+        [SerializeField] [HideInInspector] public int ForwardVariableID;
+        [SerializeField] [HideInInspector] public int RightVariableID;
         [SerializeField] [HideInInspector] public int BaseNodeTagID;
 
         void OnValidate()
@@ -75,6 +84,9 @@ namespace Unity.Multiplayer.Samples.BossRoom
             EntryFaintedTriggerID = Animator.StringToHash(m_EntryFaintedTrigger);
 
             SpeedVariableID = Animator.StringToHash(m_SpeedVariable);
+            ForwardVariableID = Animator.StringToHash(m_ForwardVariable);
+            RightVariableID = Animator.StringToHash(m_RightVariable);
+
             BaseNodeTagID = Animator.StringToHash(m_BaseNodeTag);
         }
     }
