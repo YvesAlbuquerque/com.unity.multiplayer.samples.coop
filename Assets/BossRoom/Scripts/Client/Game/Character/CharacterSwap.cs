@@ -142,10 +142,8 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
         {
             ClearOverrideMaterial();
 
-            if (m_CharacterModel.specialFx)
-            {
-                m_CharacterModel.specialFx.enabled = true;
-            }
+            //if (m_CharacterModel.specialFx)
+                //m_CharacterModel.specialFx.enabled = true;
 
             if (m_Animator)
             {
