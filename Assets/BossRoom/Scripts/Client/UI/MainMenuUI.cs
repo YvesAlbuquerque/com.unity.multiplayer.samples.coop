@@ -66,6 +66,8 @@ namespace Unity.Multiplayer.Samples.BossRoom.Visual
                 (string connectInput, int connectPort, string playerName, OnlineMode onlineMode) =>
             {
                 m_GameNetPortal.PlayerName = playerName;
+                m_GameNetPortal.GraphicsIndex = PlayerPrefs.GetInt("CharIndex", 0);
+
                 switch (onlineMode)
                 {
                     case OnlineMode.Relay:
@@ -90,6 +92,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Visual
                 (string connectInput, int connectPort, string playerName, OnlineMode onlineMode) =>
             {
                 m_GameNetPortal.PlayerName = playerName;
+                m_GameNetPortal.GraphicsIndex = PlayerPrefs.GetInt("CharIndex", 0);
 
                 switch (onlineMode)
                 {

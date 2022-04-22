@@ -208,6 +208,8 @@ namespace Unity.Multiplayer.Samples.BossRoom
         /// <param name="sessionPlayerData"> new data to overwrite the old </param>
         public void SetPlayerData(ulong clientId, T sessionPlayerData)
         {
+            Debug.Log("SetPlayerData from type " + sessionPlayerData.GetType());
+
             if (m_ClientIDToGuid.TryGetValue(clientId, out string clientGUID))
             {
                 m_ClientData[clientGUID] = sessionPlayerData;
@@ -278,6 +280,30 @@ namespace Unity.Multiplayer.Samples.BossRoom
                 }
 
                 m_ClientIDToGuid.Remove(id);
+            }
+        }
+
+        [ContextMenu("PrintClientGUID")]
+        void PrintClientData()
+        {
+            Debug.Log("-----PrintClientGUID------");
+            foreach (var item in m_ClientData)
+            {
+                Debug.Log("->");
+                Debug.Log(item.Key);
+                Debug.Log(item.Value.ClientID);
+            }
+        }
+
+        [ContextMenu("PrintClientGUID")]
+        void PrintClientGUID()
+        {
+            Debug.Log("-----PrintClientGUID------");
+            foreach (var item in m_ClientIDToGuid)
+            {
+                Debug.Log("->");
+                Debug.Log(item.Key);
+                Debug.Log(item.Value);
             }
         }
     }

@@ -82,7 +82,6 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
             {
                 enabled = false;
             }
-            Debug.Log(enabled);
         }
 
         /// <summary>
@@ -282,7 +281,8 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
             {
                 clientGUID = clientGuid,
                 clientScene = SceneManager.GetActiveScene().buildIndex,
-                playerName = portal.PlayerName
+                playerName = portal.PlayerName,
+                graphicIndex = portal.GraphicsIndex
             });
 
             var payloadBytes = System.Text.Encoding.UTF8.GetBytes(payload);

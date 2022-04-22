@@ -138,6 +138,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
         /// <param name="connectionApprovedCallback">The delegate we must invoke to signal that the connection was approved or not. </param>
         virtual protected void ApprovalCheck(byte[] connectionData, ulong clientId, NetworkManager.ConnectionApprovedDelegate connectionApprovedCallback)
         {
+            Debug.Log("WRONG APPROVALCHECK FROM BOSSROOM");
             if (connectionData.Length > k_MaxConnectPayload)
             {
                 connectionApprovedCallback(false, 0, false, null, null);

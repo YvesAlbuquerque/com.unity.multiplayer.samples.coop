@@ -35,6 +35,7 @@ namespace Unity.Multiplayer.Samples.BossRoom
         public string clientGUID;
         public int clientScene = -1;
         public string playerName;
+        public int graphicIndex;
     }
 
     /// <summary>
@@ -74,6 +75,11 @@ namespace Unity.Multiplayer.Samples.BossRoom
         /// the name of the player chosen at game start
         /// </summary>
         public string PlayerName;
+
+        /// <summary>
+        /// Index of visual char
+        /// </summary>
+        public int GraphicsIndex;
 
         /// <summary>
         /// How many connections we create a Unity relay allocation for

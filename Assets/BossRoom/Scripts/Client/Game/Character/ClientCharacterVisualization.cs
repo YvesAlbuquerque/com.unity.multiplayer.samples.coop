@@ -276,9 +276,10 @@ namespace Unity.Multiplayer.Samples.BossRoom.Visual
             if (m_ClientVisualsAnimator)
             {
                 // set Animator variables here
-                OurAnimator.SetFloat(m_VisualizationConfiguration.SpeedVariableID, GetVisualMovementSpeed());
+                float speed = GetVisualMovementSpeed();
+                OurAnimator.SetFloat(m_VisualizationConfiguration.SpeedVariableID, speed);
                 Vector2 direction = GetVisualMovementDirection(m_LerpedPosition);
-                Debug.Log("Direction:" + direction);
+                //Debug.Log("Direction:" + direction);
                 OurAnimator.SetFloat(m_VisualizationConfiguration.ForwardVariableID, direction.y);
                 OurAnimator.SetFloat(m_VisualizationConfiguration.RightVariableID, direction.x);
             }

@@ -11,8 +11,14 @@ namespace Unity.Multiplayer.Samples.BossRoom
     public class NetworkAvatarGuidState : NetworkBehaviour
     {
         [FormerlySerializedAs("AvatarGuidArray")]
-        [HideInInspector]
+        //[HideInInspector]
         public NetworkVariable<NetworkGuid> AvatarGuid = new NetworkVariable<NetworkGuid>();
+
+        //[HideInInspector]
+        public NetworkVariable<int> AvatarIndex = new NetworkVariable<int>();
+
+        //[HideInInspector]
+        public NetworkVariable<int> AvatarGraphicsIndex = new NetworkVariable<int>();
 
         CharacterClassContainer m_CharacterClassContainer;
 
@@ -42,16 +48,12 @@ namespace Unity.Multiplayer.Samples.BossRoom
         {
             m_CharacterClassContainer = GetComponent<CharacterClassContainer>();
             DontDestroyOnLoad(gameObject);
-
-            Debug.Log(gameObject);
-            Debug.Log(m_AvatarRegistry);
         }
 
         public void RegisterAvatar(Guid guid)
         {
             if (m_CharacterClassContainer == null)
                 Awake();
-            Debug.Log("RegisterAvatar");
 
             Debug.Log(guid);
             if (guid.Equals(Guid.Empty))
