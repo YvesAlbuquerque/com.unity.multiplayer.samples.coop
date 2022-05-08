@@ -19,6 +19,8 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
     /*[RequireComponent(typeof(NetworkCharacterState), typeof(NavMeshAgent), typeof(ServerCharacter)), RequireComponent(typeof(Rigidbody))]*/
     public class ServerCharacterMovement : NetworkBehaviour
     {
+        Transform mainCameraTransform;
+
         [SerializeField]
         NavMeshAgent m_NavMeshAgent;
 
@@ -47,6 +49,26 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
         // this one is specific to knockback mode
         private Vector3 m_KnockbackVector;
 
+        private Vector3 inputMovement;
+        private Vector3 movementDirection;
+        private Vector3 charDirection;
+        private Vector3 cameraDirection;
+        private bool isTargetPosition = false;
+        private bool isWalkingBackwards = false;
+
+        public Transform MainCameraTransform
+        {
+            get
+            {
+                if (mainCameraTransform == null)
+                    mainCameraTransform = Camera.main.transform;
+
+                return mainCameraTransform;
+            }
+
+            set => mainCameraTransform = value;
+        }
+
         private void Awake()
         {
             m_NavigationSystem = GameObject.FindGameObjectWithTag(NavigationSystem.NavigationSystemTag).GetComponent<NavigationSystem>();
@@ -70,10 +92,22 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
         /// Sets a movement target. We will path to this position, avoiding static obstacles.
         /// </summary>
         /// <param name="position">Position in world space to path to. </param>
-        public void SetMovementTarget(Vector3 position)
+        public void SetMovementTarget(Vector3 newInput, bool isPosition)
         {
             m_MovementState = MovementState.PathFollowing;
-            m_NavPath.SetTargetPosition(position);
+            isTargetPosition = isPosition;
+            inputMovement = newInput;
+
+            if (isTargetPosition)
+            {
+                movementDirection = inputMovement;
+                m_NavPath.SetTargetPosition(movementDirection);
+            }
+            else
+            {
+                isWalkingBackwards = inputMovement.z < 0;
+                movementDirection = inputMovement;
+            }
         }
 
         public void StartForwardCharge(float speed, float duration)
@@ -171,7 +205,6 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
         {
             if (m_MovementState == MovementState.Idle)
                 return;
-
             
 
             if (m_MovementState == MovementState.Charging)
@@ -201,19 +234,39 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             }
             else
             {
-                var desiredMovementAmount = GetBaseMovementSpeed() * Time.fixedDeltaTime;
-                movementVector = m_NavPath.MoveAlongPath(desiredMovementAmount);
 
+                var desiredMovementAmount = GetBaseMovementSpeed() * Time.fixedDeltaTime;
+                if (isTargetPosition)
+                    movementVector = m_NavPath.MoveAlongPath(desiredMovementAmount);
+                else
+                {
+
+                    cameraDirection = HibridDirection(inputMovement);
+                    movementDirection = cameraDirection;
+                    movementVector = movementDirection * desiredMovementAmount;
+                }
                 // If we didn't move stop moving.
                 if (movementVector == Vector3.zero)
                 {
                     m_MovementState = MovementState.Idle;
                     return;
                 }
+
             }
 
+
             m_NavMeshAgent.Move(movementVector);
-            transform.rotation = Quaternion.LookRotation(movementVector);
+            if (isWalkingBackwards)
+            {
+                Vector3 backwardsLookRotation = inputMovement;
+                backwardsLookRotation.z = -backwardsLookRotation.z;
+                backwardsLookRotation = HibridDirection(backwardsLookRotation);
+                transform.rotation = Quaternion.Slerp(m_Rigidbody.rotation, Quaternion.LookRotation(backwardsLookRotation), GetBaseMovementSpeed() * Time.fixedDeltaTime);
+            }
+            else
+            {
+                transform.rotation = Quaternion.Slerp(m_Rigidbody.rotation, Quaternion.LookRotation(movementDirection), GetBaseMovementSpeed() * Time.fixedDeltaTime);
+            }
 
             // After moving adjust the position of the dynamic rigidbody.
             m_Rigidbody.position = transform.position;
@@ -245,6 +298,48 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
                 default:
                     return MovementStatus.Normal;
             }
+        }
+
+        Vector3 HibridDirection(Vector3 movementDirection)
+        {
+            if (MainCameraTransform == null)
+                MainCameraTransform = Camera.main.transform;
+
+            var charForward = transform.forward;
+            var cameraRight = MainCameraTransform.right;
+
+            charForward.y = 0f;
+            cameraRight.y = 0f;
+
+            return charForward * movementDirection.z + cameraRight * movementDirection.x;
+
+        }
+
+        Vector3 CameraDirection(Vector3 movementDirection)
+        {
+            if (MainCameraTransform == null)
+                MainCameraTransform = Camera.main.transform;
+
+            var cameraForward = MainCameraTransform.forward;
+            var cameraRight = MainCameraTransform.right;
+
+            cameraForward.y = 0f;
+            cameraRight.y = 0f;
+
+            return cameraForward * movementDirection.z + cameraRight * movementDirection.x;
+
+        }
+
+        Vector3 CharDirection(Vector3 movementDirection)
+        {
+            var charForward = transform.forward;
+            var charRight = transform.right;
+
+            charForward.y = 0f;
+            charRight.y = 0f;
+
+            return charForward * movementDirection.z + charRight * movementDirection.x;
+
         }
     }
 }

@@ -122,7 +122,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             }
         }
 
-        private void OnClientMoveRequest(Vector3 targetPosition)
+        private void OnClientMoveRequest(Vector3 targetDirectionPosition, bool isPosition = false)
         {
             if (NetState.LifeState == LifeState.Alive && !m_Movement.IsPerformingForcedMovement())
             {
@@ -139,7 +139,8 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
                 }
 
                 m_ActionPlayer.CancelRunningActionsByLogic(ActionLogic.Target, true); //clear target on move.
-                m_Movement.SetMovementTarget(targetPosition);
+
+                m_Movement.SetMovementTarget(targetDirectionPosition, isPosition);
             }
         }
 

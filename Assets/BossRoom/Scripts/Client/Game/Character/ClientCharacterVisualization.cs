@@ -129,6 +129,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Visual
                             inputSender.ActionInputEvent += OnActionInput;
                         }
                         inputSender.ClientMoveEvent += OnMoveInput;
+                        inputSender.ClientDirectionEvent += OnMoveInput;
                     }
                 }
             }
@@ -161,6 +162,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Visual
                 {
                     sender.ActionInputEvent -= OnActionInput;
                     sender.ClientMoveEvent -= OnMoveInput;
+                    sender.ClientDirectionEvent -= OnMoveInput;
                 }
             }
         }
@@ -278,9 +280,9 @@ namespace Unity.Multiplayer.Samples.BossRoom.Visual
                 // set Animator variables here
                 float speed = GetVisualMovementSpeed();
                 OurAnimator.SetFloat(m_VisualizationConfiguration.SpeedVariableID, speed);
-                Vector2 direction = GetVisualMovementDirection(m_LerpedPosition);
+                Vector2 direction = GetVisualMovementDirection(m_LerpedPosition) * speed;
                 //Debug.Log("Direction:" + direction);
-                OurAnimator.SetFloat(m_VisualizationConfiguration.ForwardVariableID, direction.y);
+                OurAnimator.SetFloat(m_VisualizationConfiguration.ForwardVariableID, -direction.y);
                 OurAnimator.SetFloat(m_VisualizationConfiguration.RightVariableID, direction.x);
             }
 

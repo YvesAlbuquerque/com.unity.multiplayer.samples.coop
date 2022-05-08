@@ -3,6 +3,7 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.Assertions;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 namespace Unity.Multiplayer.Samples.BossRoom.Client
 {
@@ -12,6 +13,8 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
     [RequireComponent(typeof(NetworkCharacterState))]
     public class ClientInputSender : NetworkBehaviour
     {
+        public bool useClickMovement = false;
+
         private const float k_MouseInputRaycastDistance = 100f;
 
         //The movement input rate is capped at 50ms (or 20 fps). This provides a nice balance between responsiveness and
@@ -85,9 +88,17 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
         private BaseActionInput m_CurrentSkillInput = null;
         private bool m_MoveRequest = false;
 
+        [Header("Input Settings")]
+        //public PlayerInput playerInput;
+        public float movementSmoothingSpeed = 1f;
+        private Vector3 smoothInputMovementOld;
+        private Vector3 rawInputMovement;
+        private Vector3 smoothInputMovement;
+
 
         Camera m_MainCamera;
 
+        public event Action<Vector3> ClientDirectionEvent;
         public event Action<Vector3> ClientMoveEvent;
 
         [SerializeField]
@@ -162,20 +173,37 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
 
             m_ActionRequestCount = 0;
 
-            if (m_MoveRequest)
+            bool enoughTimeToTellServerAboutIt = ((Time.time - m_LastSentMove) > k_MoveSendRateSeconds);
+
+            if (useClickMovement)
             {
-                m_MoveRequest = false;
-                if ( (Time.time - m_LastSentMove) > k_MoveSendRateSeconds)
+
+                if (m_MoveRequest && enoughTimeToTellServerAboutIt)
                 {
                     m_LastSentMove = Time.time;
+
+                    m_MoveRequest = false;
                     var ray = m_MainCamera.ScreenPointToRay(Input.mousePosition);
                     if (Physics.RaycastNonAlloc(ray, k_CachedHit, k_MouseInputRaycastDistance, k_GroundLayerMask) > 0)
                     {
-                        m_NetworkCharacter.SendCharacterInputServerRpc(k_CachedHit[0].point);
+                        m_NetworkCharacter.SendCharacterTargetPositionInputServerRpc(k_CachedHit[0].point);
 
                         //Send our client only click request
                         ClientMoveEvent?.Invoke(k_CachedHit[0].point);
                     }
+                    smoothInputMovementOld = smoothInputMovement;
+                }
+            }
+            else
+            {
+                bool differentInput = Mathf.Abs(smoothInputMovement.x - smoothInputMovementOld.x) > 0.01f || Mathf.Abs(smoothInputMovement.y - smoothInputMovementOld.y) > 0.01f || Mathf.Abs(smoothInputMovement.z - smoothInputMovementOld.z) > 0.01f; //eliminate noise
+                if (enoughTimeToTellServerAboutIt && differentInput)
+                {
+                    m_LastSentMove = Time.time;
+
+                    m_NetworkCharacter.SendCharacterDirectionInputServerRpc(smoothInputMovement);
+                    ClientDirectionEvent?.Invoke(smoothInputMovement);
+                    smoothInputMovementOld = smoothInputMovement;
                 }
             }
         }
@@ -433,6 +461,50 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
                     m_MoveRequest = true;
                 }
             }
+
+            CalculateMovementInputSmoothing();
+        }
+
+        //INPUT SYSTEM ACTION METHODS --------------
+
+        //This is called from PlayerInput; when a joystick or arrow keys has been pushed.
+        //It stores the input Vector as a Vector3 to then be used by the smoothing function.
+
+
+        public void OnMovement(InputAction.CallbackContext value)
+        {
+            Vector2 inputMovement = value.ReadValue<Vector2>();
+            rawInputMovement = new Vector3(inputMovement.x, 0, inputMovement.y);
+        }
+
+        public void OnClickMovement(InputAction.CallbackContext value)
+        {
+            Vector2 inputMovement = value.ReadValue<Vector2>();
+            rawInputMovement = new Vector3(inputMovement.x, 0, inputMovement.y);
+        }
+
+        void CalculateMovementInputSmoothing()
+        {
+            smoothInputMovement = Vector3.Lerp(smoothInputMovement, rawInputMovement, Time.deltaTime * movementSmoothingSpeed);
+
+            if (rawInputMovement.x == 0)
+                smoothInputMovement.x = 0;
+
+            if (rawInputMovement.sqrMagnitude < 0.001f)
+                smoothInputMovement = Vector3.zero;
+        }
+
+        //This is called from PlayerInput, when a button has been pushed, that corresponds with the 'Attack' action
+        public void OnAttack(InputAction.CallbackContext value)
+        {
+            Debug.Log("OnAttack " + value.started);
+        }
+
+        //This is called from Player Input, when a button has been pushed, that correspons with the 'TogglePause' action
+        public void OnTogglePause(InputAction.CallbackContext value)
+        {
+            Debug.Log("OnTogglePause " + value.started);
+
         }
     }
 }

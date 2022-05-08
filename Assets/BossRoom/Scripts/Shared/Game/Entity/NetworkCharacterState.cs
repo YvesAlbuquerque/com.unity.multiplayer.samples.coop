@@ -108,7 +108,7 @@ namespace Unity.Multiplayer.Samples.BossRoom
         /// <summary>
         /// Gets invoked when inputs are received from the client which own this networked character.
         /// </summary>
-        public event Action<Vector3> ReceivedClientInput;
+        public event Action<Vector3, bool> ReceivedClientInput;
 
         public override void OnNetworkSpawn()
         {
@@ -133,11 +133,21 @@ namespace Unity.Multiplayer.Samples.BossRoom
         /// <summary>
         /// RPC to send inputs for this character from a client to a server.
         /// </summary>
-        /// <param name="movementTarget">The position which this character should move towards.</param>
+        /// <param name="movementDirection">The position which this character should move towards.</param>
         [ServerRpc]
-        public void SendCharacterInputServerRpc(Vector3 movementTarget)
+        public void SendCharacterTargetPositionInputServerRpc(Vector3 movementDirection)
         {
-            ReceivedClientInput?.Invoke(movementTarget);
+            ReceivedClientInput?.Invoke(movementDirection, true);
+        }
+
+        /// <summary>
+        /// RPC to send inputs for this character from a client to a server.
+        /// </summary>
+        /// <param name="movementDirection">The position which this character should move towards.</param>
+        [ServerRpc]
+        public void SendCharacterDirectionInputServerRpc(Vector3 movementDirection)
+        {
+            ReceivedClientInput?.Invoke(movementDirection, false);
         }
 
         // ACTION SYSTEM

@@ -38,7 +38,6 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
 
             m_FeedbackObj.transform.position = position;
             m_FeedbackObj.SetActive(true);
-
         }
 
         public override void OnDestroy()
