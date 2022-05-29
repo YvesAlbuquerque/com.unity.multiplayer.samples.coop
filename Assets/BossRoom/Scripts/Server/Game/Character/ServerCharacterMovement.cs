@@ -19,8 +19,6 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
     /*[RequireComponent(typeof(NetworkCharacterState), typeof(NavMeshAgent), typeof(ServerCharacter)), RequireComponent(typeof(Rigidbody))]*/
     public class ServerCharacterMovement : NetworkBehaviour
     {
-        Transform mainCameraTransform;
-
         [SerializeField]
         NavMeshAgent m_NavMeshAgent;
 
@@ -51,23 +49,13 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
 
         private Vector3 inputMovement;
         private Vector3 movementDirection;
+        public float movementSmoothingSpeed = 4f;
+        private Vector3 smoothInputMovement;
+
         private Vector3 charDirection;
         private Vector3 cameraDirection;
         private bool isTargetPosition = false;
         private bool isWalkingBackwards = false;
-
-        public Transform MainCameraTransform
-        {
-            get
-            {
-                if (mainCameraTransform == null)
-                    mainCameraTransform = Camera.main.transform;
-
-                return mainCameraTransform;
-            }
-
-            set => mainCameraTransform = value;
-        }
 
         private void Awake()
         {
@@ -105,7 +93,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             }
             else
             {
-                isWalkingBackwards = inputMovement.z < 0;
+                //isWalkingBackwards = inputMovement.z < 0;
                 movementDirection = inputMovement;
             }
         }
@@ -234,15 +222,15 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             }
             else
             {
-
+                //CalculateMovementInputSmoothing();
                 var desiredMovementAmount = GetBaseMovementSpeed() * Time.fixedDeltaTime;
                 if (isTargetPosition)
                     movementVector = m_NavPath.MoveAlongPath(desiredMovementAmount);
                 else
                 {
 
-                    cameraDirection = HibridDirection(inputMovement);
-                    movementDirection = cameraDirection;
+                    //cameraDirection = HibridDirection(inputMovement);
+                    movementDirection = inputMovement;
                     movementVector = movementDirection * desiredMovementAmount;
                 }
                 // If we didn't move stop moving.
@@ -259,8 +247,8 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             if (isWalkingBackwards)
             {
                 Vector3 backwardsLookRotation = inputMovement;
-                backwardsLookRotation.z = -backwardsLookRotation.z;
-                backwardsLookRotation = HibridDirection(backwardsLookRotation);
+                //backwardsLookRotation.z = -backwardsLookRotation.z;
+                //backwardsLookRotation = HibridDirection(backwardsLookRotation);
                 transform.rotation = Quaternion.Slerp(m_Rigidbody.rotation, Quaternion.LookRotation(backwardsLookRotation), GetBaseMovementSpeed() * Time.fixedDeltaTime);
             }
             else
@@ -300,46 +288,16 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             }
         }
 
-        Vector3 HibridDirection(Vector3 movementDirection)
+        void CalculateMovementInputSmoothing()
         {
-            if (MainCameraTransform == null)
-                MainCameraTransform = Camera.main.transform;
 
-            var charForward = transform.forward;
-            var cameraRight = MainCameraTransform.right;
+            smoothInputMovement = Vector3.Lerp(smoothInputMovement, movementDirection, Time.deltaTime * movementSmoothingSpeed);
 
-            charForward.y = 0f;
-            cameraRight.y = 0f;
+            //if (rawInputMovement.x == 0)
+            //smoothInputMovement.x = 0;
 
-            return charForward * movementDirection.z + cameraRight * movementDirection.x;
-
-        }
-
-        Vector3 CameraDirection(Vector3 movementDirection)
-        {
-            if (MainCameraTransform == null)
-                MainCameraTransform = Camera.main.transform;
-
-            var cameraForward = MainCameraTransform.forward;
-            var cameraRight = MainCameraTransform.right;
-
-            cameraForward.y = 0f;
-            cameraRight.y = 0f;
-
-            return cameraForward * movementDirection.z + cameraRight * movementDirection.x;
-
-        }
-
-        Vector3 CharDirection(Vector3 movementDirection)
-        {
-            var charForward = transform.forward;
-            var charRight = transform.right;
-
-            charForward.y = 0f;
-            charRight.y = 0f;
-
-            return charForward * movementDirection.z + charRight * movementDirection.x;
-
+            if (movementDirection.sqrMagnitude < 0.001f)
+                smoothInputMovement = Vector3.zero;
         }
     }
 }

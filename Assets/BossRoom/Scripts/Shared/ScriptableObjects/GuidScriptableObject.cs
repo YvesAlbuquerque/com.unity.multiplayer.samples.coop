@@ -23,5 +23,11 @@ namespace Unity.Multiplayer.Samples.BossRoom
                 m_Guid = Guid.NewGuid().ToByteArray();
             }
         }
+
+        [ContextMenu("Refresh GUID")]
+        void RefreshGUID ()
+        {
+            m_Guid = Guid.NewGuid().ToByteArray();
+        }
     }
 }

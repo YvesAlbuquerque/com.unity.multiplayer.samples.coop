@@ -29,8 +29,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3736552308919084700}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.34, y: 0, z: -1.35}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5148631995255263307}
   m_Father: {fileID: 0}
@@ -66,7 +67,6 @@ MonoBehaviour:
   m_Animator: {fileID: 0}
   m_StealthySelfMaterial: {fileID: 2100000, guid: 3a999e4944c72a84c830c337bdb6348b, type: 2}
   m_StealthyOtherMaterial: {fileID: 2100000, guid: f3b8028a3fb2d3a42b5a0c73fc01b6f0, type: 2}
-  m_ClientCharacterVisualization: {fileID: 0}
 --- !u!82 &-674663276945163795
 AudioSource:
   m_ObjectHideFlags: 0
@@ -336,7 +336,6 @@ MonoBehaviour:
   m_TooSlowThreshold: 0.3
   m_WalkSpeedThreshold: 0.6
   m_RunSpeedThreshold: 1.2
-  m_ClientCharacterVisualization: {fileID: 0}
 --- !u!82 &3410014739571049847
 AudioSource:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
     [RequireComponent(typeof(NetworkCharacterState))]
     public class ClientInputSender : NetworkBehaviour
     {
+
         public bool useClickMovement = false;
 
         private const float k_MouseInputRaycastDistance = 100f;
@@ -39,6 +40,21 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
         /// This event fires at the time when an action request is sent to the server.
         /// </summary>
         public Action<ActionRequestData> ActionInputEvent;
+
+        private Transform mainCameraTransform;
+
+        public Transform MainCameraTransform
+        {
+            get
+            {
+                if (mainCameraTransform == null)
+                    mainCameraTransform = Camera.main.transform;
+
+                return mainCameraTransform;
+            }
+
+            set => mainCameraTransform = value;
+        }
 
         /// <summary>
         /// This describes how a skill was requested. Skills requested via mouse click will do raycasts to determine their target; skills requested
@@ -90,10 +106,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
 
         [Header("Input Settings")]
         //public PlayerInput playerInput;
-        public float movementSmoothingSpeed = 1f;
-        private Vector3 smoothInputMovementOld;
         private Vector3 rawInputMovement;
-        private Vector3 smoothInputMovement;
 
 
         Camera m_MainCamera;
@@ -191,19 +204,17 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
                         //Send our client only click request
                         ClientMoveEvent?.Invoke(k_CachedHit[0].point);
                     }
-                    smoothInputMovementOld = smoothInputMovement;
                 }
             }
             else
             {
-                bool differentInput = Mathf.Abs(smoothInputMovement.x - smoothInputMovementOld.x) > 0.01f || Mathf.Abs(smoothInputMovement.y - smoothInputMovementOld.y) > 0.01f || Mathf.Abs(smoothInputMovement.z - smoothInputMovementOld.z) > 0.01f; //eliminate noise
-                if (enoughTimeToTellServerAboutIt && differentInput)
+                if (enoughTimeToTellServerAboutIt)
                 {
                     m_LastSentMove = Time.time;
 
-                    m_NetworkCharacter.SendCharacterDirectionInputServerRpc(smoothInputMovement);
-                    ClientDirectionEvent?.Invoke(smoothInputMovement);
-                    smoothInputMovementOld = smoothInputMovement;
+                    Vector3 finalDirection = rawInputMovement.z < 0 ? CameraDirection(rawInputMovement) : HibridDirection(rawInputMovement);
+                    m_NetworkCharacter.SendCharacterDirectionInputServerRpc(finalDirection);
+                    ClientDirectionEvent?.Invoke(finalDirection);
                 }
             }
         }
@@ -386,8 +397,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
                 return;
             }
 
-            Assert.IsTrue(GameDataSource.Instance.ActionDataByType.ContainsKey(action),
-                $"Action {action} must be part of ActionData dictionary!");
+            Assert.IsTrue(GameDataSource.Instance.ActionDataByType.ContainsKey(action), $"Action {action} must be part of ActionData dictionary!");
 
             if (m_ActionRequestCount < m_ActionRequests.Length)
             {
@@ -400,48 +410,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
 
         void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Alpha1))
-            {
-                RequestAction(CharacterData.Skill1, SkillTriggerStyle.Keyboard);
-            }
-            else if (Input.GetKeyUp(KeyCode.Alpha1))
-            {
-                RequestAction(CharacterData.Skill1, SkillTriggerStyle.KeyboardRelease);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha2))
-            {
-                RequestAction(CharacterData.Skill2, SkillTriggerStyle.Keyboard);
-            }
-            else if (Input.GetKeyUp(KeyCode.Alpha2))
-            {
-                RequestAction(CharacterData.Skill2, SkillTriggerStyle.KeyboardRelease);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha3))
-            {
-                RequestAction(CharacterData.Skill3, SkillTriggerStyle.Keyboard);
-            }
-            else if (Input.GetKeyUp(KeyCode.Alpha3))
-            {
-                RequestAction(CharacterData.Skill3, SkillTriggerStyle.KeyboardRelease);
-            }
-
-            if (Input.GetKeyDown(KeyCode.Alpha5))
-            {
-                RequestAction(ActionType.Emote1, SkillTriggerStyle.Keyboard);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha6))
-            {
-                RequestAction(ActionType.Emote2, SkillTriggerStyle.Keyboard);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha7))
-            {
-                RequestAction(ActionType.Emote3, SkillTriggerStyle.Keyboard);
-            }
-            if (Input.GetKeyDown(KeyCode.Alpha8))
-            {
-                RequestAction(ActionType.Emote4, SkillTriggerStyle.Keyboard);
-            }
-
+            /*
             if ( !EventSystem.current.IsPointerOverGameObject() && m_CurrentSkillInput == null)
             {
                 //IsPointerOverGameObject() is a simple way to determine if the mouse is over a UI element. If it is, we don't perform mouse input logic,
@@ -460,9 +429,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
                 {
                     m_MoveRequest = true;
                 }
-            }
-
-            CalculateMovementInputSmoothing();
+            }*/
         }
 
         //INPUT SYSTEM ACTION METHODS --------------
@@ -483,27 +450,114 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
             rawInputMovement = new Vector3(inputMovement.x, 0, inputMovement.y);
         }
 
-        void CalculateMovementInputSmoothing()
+        public void OnSkill1(InputAction.CallbackContext value)
         {
-            smoothInputMovement = Vector3.Lerp(smoothInputMovement, rawInputMovement, Time.deltaTime * movementSmoothingSpeed);
+            Debug.Log("OnSkill1");
 
-            if (rawInputMovement.x == 0)
-                smoothInputMovement.x = 0;
+            if (value.started)
+                RequestAction(CharacterData.Skill1, SkillTriggerStyle.Keyboard);
+            else
+                RequestAction(CharacterData.Skill1, SkillTriggerStyle.KeyboardRelease);
+        }
 
-            if (rawInputMovement.sqrMagnitude < 0.001f)
-                smoothInputMovement = Vector3.zero;
+        public void OnSkill2(InputAction.CallbackContext value)
+        {
+            Debug.Log("OnSkill2");
+            if (value.started)
+                RequestAction(CharacterData.Skill2, SkillTriggerStyle.Keyboard);
+            else
+                RequestAction(CharacterData.Skill2, SkillTriggerStyle.KeyboardRelease);
+        }
+
+        public void OnSkill3(InputAction.CallbackContext value)
+        {
+            Debug.Log("OnSkill3");
+
+            if (value.started)
+                RequestAction(CharacterData.Skill3, SkillTriggerStyle.Keyboard);
+            else
+                RequestAction(CharacterData.Skill3, SkillTriggerStyle.KeyboardRelease);
         }
 
         //This is called from PlayerInput, when a button has been pushed, that corresponds with the 'Attack' action
-        public void OnAttack(InputAction.CallbackContext value)
+        public void OnSkill4(InputAction.CallbackContext value)
         {
-            Debug.Log("OnAttack " + value.started);
+            Debug.Log("OnSkill4");
+
+            if (value.started)
+                RequestAction(ActionType.Emote1, SkillTriggerStyle.Keyboard);
+        }
+
+        //This is called from PlayerInput, when a button has been pushed, that corresponds with the 'Attack' action
+        public void OnSkill5(InputAction.CallbackContext value)
+        {
+            Debug.Log("OnSkill5");
+
+            if (value.started)
+                RequestAction(ActionType.Emote2, SkillTriggerStyle.Keyboard);
+        }
+
+        //This is called from PlayerInput, when a button has been pushed, that corresponds with the 'Attack' action
+        public void OnSkill6(InputAction.CallbackContext value)
+        {
+            Debug.Log("OnSkill6");
+
+            if (value.started)
+                RequestAction(ActionType.Emote3, SkillTriggerStyle.Keyboard);
+        }
+
+        //This is called from PlayerInput, when a button has been pushed, that corresponds with the 'Attack' action
+        public void OnSkill7(InputAction.CallbackContext value)
+        {
+            Debug.Log("OnSkill7");
+
+            if (value.started)
+                RequestAction(ActionType.Emote4, SkillTriggerStyle.Keyboard);
         }
 
         //This is called from Player Input, when a button has been pushed, that correspons with the 'TogglePause' action
         public void OnTogglePause(InputAction.CallbackContext value)
         {
             Debug.Log("OnTogglePause " + value.started);
+
+        }
+
+        Vector3 HibridDirection(Vector3 movementDirection)
+        {
+            if (MainCameraTransform == null)
+                MainCameraTransform = Camera.main.transform;
+
+            var charForward = transform.forward;
+            var cameraRight = MainCameraTransform.right;
+
+            charForward.y = 0f;
+            cameraRight.y = 0f;
+
+            return charForward * movementDirection.z + cameraRight * movementDirection.x;
+
+        }
+
+        Vector3 CameraDirection(Vector3 movementDirection)
+        {
+            var cameraForward = MainCameraTransform.forward;
+            var cameraRight = MainCameraTransform.right;
+
+            cameraForward.y = 0f;
+            cameraRight.y = 0f;
+
+            return cameraForward * movementDirection.z + cameraRight * movementDirection.x;
+
+        }
+
+        Vector3 CharDirection(Vector3 movementDirection)
+        {
+            var charForward = transform.forward;
+            var charRight = transform.right;
+
+            charForward.y = 0f;
+            charRight.y = 0f;
+
+            return charForward * movementDirection.z + charRight * movementDirection.x;
 
         }
     }

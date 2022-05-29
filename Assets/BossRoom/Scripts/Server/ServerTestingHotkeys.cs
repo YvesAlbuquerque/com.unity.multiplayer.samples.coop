@@ -44,7 +44,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
         {
             if (!IsServer) { return; } // not initialized yet
 
-            if (m_SpawnEnemyKeyCode != KeyCode.None && Input.GetKeyDown(m_SpawnEnemyKeyCode))
+            /*if (m_SpawnEnemyKeyCode != KeyCode.None && Input.GetKeyDown(m_SpawnEnemyKeyCode))
             {
                 var newEnemy = Instantiate(m_EnemyPrefab);
                 newEnemy.SpawnWithOwnership(NetworkManager.Singleton.LocalClientId, true);
@@ -57,7 +57,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             if (m_InstantQuitKeyCode != KeyCode.None && Input.GetKeyDown(m_InstantQuitKeyCode))
             {
                 NetworkManager.SceneManager.LoadScene("PostGame", LoadSceneMode.Single);
-            }
+            }*/
         }
     }
 }
