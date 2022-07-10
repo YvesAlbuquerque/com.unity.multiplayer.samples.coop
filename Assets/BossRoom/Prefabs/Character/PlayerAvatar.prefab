@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Animator: {fileID: 1829276847453002016}
-  m_ParameterSendBits: 0
+  m_ParameterSendBits: 469762115
   m_SendRate: 0.1
 --- !u!114 &7209204667172237188
 MonoBehaviour:
@@ -255,6 +255,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebe9bfd21e47445488dfd84b4e0c9884, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AvatarIndex:
+    m_InternalValue: 0
+  AvatarGraphicsIndex:
+    m_InternalValue: 0
   m_AvatarRegistry: {fileID: 11400000, guid: 48d17d764bff6c643a3dc035fb71c979, type: 2}
 --- !u!114 &2576537793715222015
 MonoBehaviour:
@@ -316,6 +320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 331c67f15523ad7419792662b9768f44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useClickMovement: 0
   m_CharacterClassContainer: {fileID: 5230418375993597025}
   m_PhysicsWrapper: {fileID: 6116655102486013040}
 --- !u!114 &5043718152237111612

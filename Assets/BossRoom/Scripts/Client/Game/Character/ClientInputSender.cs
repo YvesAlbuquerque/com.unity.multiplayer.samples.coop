@@ -75,6 +75,11 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
             return style == SkillTriggerStyle.KeyboardRelease || style == SkillTriggerStyle.UIRelease;
         }
 
+        private void OnDisable()
+        {
+            Debug.Log("OnDisable");
+        }
+
         /// <summary>
         /// This struct essentially relays the call params of RequestAction to FixedUpdate. Recall that we may need to do raycasts
         /// as part of doing the action, and raycasts done outside of FixedUpdate can give inconsistent results (otherwise we would
@@ -129,6 +134,8 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
         {
             if (!IsClient || !IsOwner)
             {
+                GetComponent<PlayerInput>().enabled = false;
+
                 enabled = false;
                 // dont need to do anything else if not the owner
                 return;
@@ -442,6 +449,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
         {
             Vector2 inputMovement = value.ReadValue<Vector2>();
             rawInputMovement = new Vector3(inputMovement.x, 0, inputMovement.y);
+            Debug.Log(gameObject.name + " inputMovement " + rawInputMovement);
         }
 
         public void OnClickMovement(InputAction.CallbackContext value)

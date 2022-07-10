@@ -29,7 +29,7 @@ namespace Unity.Multiplayer.Samples.BossRoom
 
         [SerializeField]
         [Tooltip("The interval to send ping RPCs to calculate the RTT. The bigger the number, the less reactive the stat will be to RTT changes")]
-        float m_PingIntervalSeconds = 0.1f;
+        float m_PingIntervalSeconds = 1f;
         float m_LastPingTime;
         Text m_TextStat;
         Text m_TextHostType;
