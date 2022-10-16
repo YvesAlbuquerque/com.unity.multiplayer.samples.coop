@@ -9,5 +9,13 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
     [CreateAssetMenu]
     public class ClientPlayerAvatarRuntimeCollection : RuntimeCollection<ClientPlayerAvatar>
     {
+        public void TurnAllOff()
+        {
+            foreach (var item in Items)
+            {
+                item.gameObject.SetActive(false);
+                Destroy(item.gameObject);
+            }
+        }
     }
 }
