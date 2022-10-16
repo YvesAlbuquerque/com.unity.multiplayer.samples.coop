@@ -48,6 +48,10 @@ namespace Unity.Multiplayer.Samples.BossRoom.Visual
             // Find the game Net Portal by tag - it should have been created by Startup
             GameObject GamePortalGO = GameObject.FindGameObjectWithTag("GameNetPortal");
             Assert.IsNotNull("No GameNetPortal found, Did you start the game from the Startup scene?");
+
+            if (GamePortalGO == null)
+                return;
+
             m_GameNetPortal = GamePortalGO.GetComponent<GameNetPortal>();
             m_ClientNetPortal = GamePortalGO.GetComponent<Client.ClientGameNetPortal>();
 
