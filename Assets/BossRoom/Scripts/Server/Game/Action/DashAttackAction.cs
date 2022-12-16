@@ -89,10 +89,9 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
         private void PerformMeleeAttack()
         {
             // perform a typical melee-hit. But note that we are using the Radius field for range, not the Range field!
-            IDamageable foe = MeleeAction.GetIdealMeleeFoe(Description.IsFriendly ^ m_Parent.IsNpc,
+            IDamageable foe = MeleeAction.GetIdealMeleeFoe(m_Parent.teamId,
                                                             m_Parent.physicsWrapper.DamageCollider,
-                                                            Description.Radius,
-                                                            (Data.TargetIds != null && Data.TargetIds.Length > 0 ? Data.TargetIds[0] : 0));
+                                                            Description.Radius);
 
             if (foe != null)
             {
