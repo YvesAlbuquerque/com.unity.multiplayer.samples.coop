@@ -18,7 +18,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
         {
             get { return NetState.IsNpc; }
         }
-
+        public int teamId{set=>m_DamageReceiver.teamId=value;get=>m_DamageReceiver.teamId;}
         /// <summary>
         /// The Character's ActionPlayer. This is mainly exposed for use by other Actions. In particular, users are discouraged from
         /// calling 'PlayAction' directly on this, as the ServerCharacter has certain game-level checks it performs in its own wrapper.
