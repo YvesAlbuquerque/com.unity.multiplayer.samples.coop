@@ -77,7 +77,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
         /// <returns></returns>
         private IDamageable DetectFoe(ulong foeHint = 0)
         {
-            return GetIdealMeleeFoe(Description.IsFriendly ^ m_Parent.IsNpc, m_Parent.physicsWrapper.DamageCollider, Description.Range, foeHint);
+            return GetIdealMeleeFoe(m_Parent.teamId, m_Parent.physicsWrapper.DamageCollider, Description.Range);
         }
 
         /// <summary>
@@ -90,10 +90,10 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
         /// <param name="meleeRange">The range in meters to check for foes.</param>
         /// <param name="preferredTargetNetworkId">The NetworkObjectId of our preferred foe, or 0 if no preference</param>
         /// <returns>ideal target's IDamageable, or null if no valid target found</returns>
-        public static IDamageable GetIdealMeleeFoe(bool isNPC, Collider ourCollider, float meleeRange, ulong preferredTargetNetworkId)
+        public static IDamageable GetIdealMeleeFoe(int teamId, Collider ourCollider, float meleeRange)
         {
             RaycastHit[] results;
-            int numResults = ActionUtils.DetectMeleeFoe(isNPC, ourCollider, meleeRange, out results);
+            int numResults = ActionUtils.DetectMeleeFoe(ourCollider, meleeRange, out results);
 
             IDamageable foundFoe = null;
 
@@ -104,7 +104,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             {
                 var damageable = results[i].collider.GetComponent<IDamageable>();
                 if (damageable != null && damageable.IsDamageable() &&
-                    (damageable.NetworkObjectId == preferredTargetNetworkId || foundFoe == null))
+                    damageable.teamId!=teamId && (foundFoe==null || Vector3.Distance(ourCollider.transform.position,results[i].transform.position)<Vector3.Distance(ourCollider.transform.position,foundFoe.transform.position)))
                 {
                     foundFoe = damageable;
                 }

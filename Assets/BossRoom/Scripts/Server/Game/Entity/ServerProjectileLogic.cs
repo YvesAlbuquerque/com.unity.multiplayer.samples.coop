@@ -80,9 +80,9 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
 
             m_DestroyAtSec = Time.fixedTime + (m_ProjectileInfo.Range / m_ProjectileInfo.Speed_m_s);
 
-            m_CollisionMask = LayerMask.GetMask(new[] { "NPCs", "Default", "Ground" });
+            m_CollisionMask = LayerMask.GetMask(new[] { "PCs", "Default", "Ground" });
             m_BlockerMask = LayerMask.GetMask(new[] { "Default", "Ground" });
-            m_NPCLayer = LayerMask.NameToLayer("NPCs");
+            m_NPCLayer = LayerMask.NameToLayer("PCs");
         }
 
         private void FixedUpdate()
@@ -142,8 +142,8 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
                         NetworkObject spawnerNet;
                         NetworkManager.Singleton.SpawnManager.SpawnedObjects.TryGetValue(m_SpawnerId, out spawnerNet);
                         ServerCharacter spawnerObj = spawnerNet != null ? spawnerNet.GetComponent<ServerCharacter>() : null;
-
-                        m_CollisionCache[i].GetComponent<IDamageable>().ReceiveHP(spawnerObj, -m_ProjectileInfo.Damage);
+                        IDamageable damageable=m_CollisionCache[i].GetComponent<IDamageable>();
+                        if(spawnerObj.teamId!=damageable.teamId)damageable.ReceiveHP(spawnerObj, -m_ProjectileInfo.Damage);
                     }
 
                     if (m_IsDead)

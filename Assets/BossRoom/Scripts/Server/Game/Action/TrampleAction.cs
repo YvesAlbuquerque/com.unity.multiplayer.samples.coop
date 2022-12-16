@@ -214,7 +214,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
             // So when we start charging across the screen, we check to see what's already touching us
             // (or close enough) and treat that like a collision.
             RaycastHit[] results;
-            int numResults = ActionUtils.DetectNearbyEntities(true, true, m_Parent.physicsWrapper.DamageCollider, k_PhysicalTouchDistance, out results);
+            int numResults = ActionUtils.DetectNearbyEntities(m_Parent.physicsWrapper.DamageCollider, k_PhysicalTouchDistance, out results);
             for (int i = 0; i < numResults; i++)
             {
                 Collide(results[i].collider);
