@@ -26,7 +26,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
         IDamageable.SpecialDamageFlags m_SpecialDamageFlags;
 
         private NetworkBreakableState m_State;
-        public int teamId{get=>-1;}
+
         private void Awake()
         {
             m_State = GetComponent<NetworkBreakableState>();
