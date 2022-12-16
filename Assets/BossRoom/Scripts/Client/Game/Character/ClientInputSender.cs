@@ -362,9 +362,9 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
             resultData.ShouldClose = true;
 
             // figure out the Direction in case we want to send it
-            Vector3 offset = hitPoint - m_PhysicsWrapper.Transform.position;
-            offset.y = 0;
-            Vector3 direction = offset.normalized;
+            // Vector3 offset = hitPoint - m_PhysicsWrapper.Transform.position;
+            // offset.y = 0;
+            Vector3 direction = m_PhysicsWrapper.transform.forward;
 
             switch (actionInfo.Logic)
             {
