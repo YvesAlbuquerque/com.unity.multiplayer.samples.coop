@@ -12,6 +12,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
 
         [SerializeField]
         NetworkLifeState m_NetworkLifeState;
+        public int teamId{set;get;}
 
         public void ReceiveHP(ServerCharacter inflicter, int HP)
         {
