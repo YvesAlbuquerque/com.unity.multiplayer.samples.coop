@@ -25,6 +25,7 @@ namespace Unity.Multiplayer.Samples.BossRoom.Server
         /// The transform of this object.
         /// </summary>
         Transform transform { get; }
+        int teamId{get;}
 
         [Flags]
         public enum SpecialDamageFlags
