@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 namespace Unity.Multiplayer.Samples.BossRoom.Client
 {
@@ -77,7 +78,9 @@ namespace Unity.Multiplayer.Samples.BossRoom.Client
         {
             if (!m_IsShowingTooltip)
             {
-                m_TooltipPopup.ShowTooltip(m_TooltipText, Input.mousePosition);
+                Vector2 worldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+
+                m_TooltipPopup.ShowTooltip(m_TooltipText, worldPos);
                 m_IsShowingTooltip = true;
             }
         }
